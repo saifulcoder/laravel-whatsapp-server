@@ -10,12 +10,12 @@ An implementation of [@adiwajshing/Baileys] (https://github.com/adiwajshing/Bail
 
 ## Frontend Installation
 
-1. You can install the package via composer:
+1. First clone or download this repository:
 ```bash
-composer create-project saifulcoder/laravel-wa-server laravel-wa-server 
+git clone https://github.com/saifulcoder/laravel-wa-server.git
 ```
 2. Execute `npm i` to install the dependencies.
-3. Setting the database configuration, open `.env` file at project root directory
+3. Setting the database configuration, rename `.env.example` to `.env` and open file at project root directory
 ```bash
 DB_DATABASE=**your_db_name**
 DB_USERNAME=**your_db_user**
