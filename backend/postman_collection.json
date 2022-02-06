@@ -1,0 +1,1379 @@
+{
+	"info": {
+		"_postman_id": "8651c7ae-5c55-41f1-9707-ca85c60e54e0",
+		"name": "Baileys API",
+		"description": "API Documentation for [https://github.com/ookamiiixd/baileys-api](https://github.com/ookamiiixd/baileys-api).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Session",
+			"item": [
+				{
+					"name": "Delete Session",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/session/delete/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"session",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "john",
+									"description": "Your created session id."
+								}
+							]
+						},
+						"description": "Delete a session."
+					},
+					"response": [
+						{
+							"name": "Response Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/session/delete/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"session",
+										"delete",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "john"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "81"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"51-sboVGYKvgXknbi2fZx1c7QmxdeM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Jan 2022 17:22:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"The session has been successfully deleted.\",\n    \"data\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Find Session",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/session/find/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"session",
+								"find",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "john",
+									"description": "Your created session id."
+								}
+							]
+						},
+						"description": "Find a session."
+					},
+					"response": [
+						{
+							"name": "Session Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/session/find/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"session",
+										"find",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "john"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"35-khYshx+O7ykPwxU1BA54yKAyByk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Jan 2022 16:56:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Session found.\",\n    \"data\": {}\n}"
+						},
+						{
+							"name": "Session Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/session/find/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"session",
+										"find",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "john"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "58"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3a-n9SkLlroaSpVRpF69SpOWOnBy+Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Jan 2022 17:05:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Session not found.\",\n    \"data\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Create New Session",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "john",
+									"description": "Session id you want to use.",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/session/add",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"session",
+								"add"
+							]
+						},
+						"description": "Create a new session."
+					},
+					"response": [
+						{
+							"name": "QR Code Received",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "john",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/session/add",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"session",
+										"add"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4426"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"114a-/EHK17Jlxhse5i8m/e3cc8moruQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Jan 2022 17:12:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"QR code received, please scan the QR code.\",\n    \"data\": {\n        \"qr\": \"data:image/png;base64,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\"\n    }\n}"
+						},
+						{
+							"name": "Response Failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "john",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/session/add",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"session",
+										"add"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4426"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"114a-/EHK17Jlxhse5i8m/e3cc8moruQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Jan 2022 17:12:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Unable to create session.\",\n    \"data\": {}\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Chat",
+			"item": [
+				{
+					"name": "Get Chat List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/chat/get?id=john",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"chat",
+								"get"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "john",
+									"description": "Your created session id."
+								}
+							]
+						},
+						"description": "Get personal chat list."
+					},
+					"response": [
+						{
+							"name": "Response Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/chat/get?id=john",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"chat",
+										"get"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "john"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "939"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3ab-3D2gyjulySXytncMgb4kbumrQt4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Jan 2022 17:24:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"jid\": \"628231xxxxxxx@s.whatsapp.net\",\n            \"count\": 0,\n            \"name\": \"John Doe\",\n            \"t\": 1641051172,\n            \"mute\": \"0\",\n            \"message\": \"true\",\n            \"modify_tag\": \"19xxxx\",\n            \"spam\": \"false\"\n        },\n        ...\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Conversation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/chat/get/:jid?id=john&limit=25&cursor_id=3EB0BB36xxxx&cursor_fromMe=true",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"chat",
+								"get",
+								":jid"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "john",
+									"description": "Your created session id."
+								},
+								{
+									"key": "limit",
+									"value": "25",
+									"description": "Limit data length. Default: 25 (Optional)."
+								},
+								{
+									"key": "cursor_id",
+									"value": "3EB0BB36xxxx",
+									"description": "Cursor id field (Optional)."
+								},
+								{
+									"key": "cursor_fromMe",
+									"value": "true",
+									"description": "Cursor fromMe field (Optional)."
+								}
+							],
+							"variable": [
+								{
+									"key": "jid",
+									"value": "628231xxxxx@s.whatsapp.net",
+									"description": "Chat jid."
+								}
+							]
+						},
+						"description": "Load conversation with a person in paginated manner."
+					},
+					"response": [
+						{
+							"name": "Response Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/chat/get/:jid?id=john&limit=25&cursor_id=3EB0BB36xxxx&cursor_fromMe=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"chat",
+										"get",
+										":jid"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "john"
+										},
+										{
+											"key": "limit",
+											"value": "25"
+										},
+										{
+											"key": "cursor_id",
+											"value": "3EB0BB36xxxx"
+										},
+										{
+											"key": "cursor_fromMe",
+											"value": "true"
+										}
+									],
+									"variable": [
+										{
+											"key": "jid",
+											"value": "628231xxxxxx@s.whatsapp.net"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35710"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8b7e-XPLXLXMP45hrsYDTttriAiWMxpQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Jan 2022 17:30:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"messages\": [\n            {\n                \"key\": {\n                    \"remoteJid\": \"628231xxxxxx@s.whatsapp.net\",\n                    \"fromMe\": true,\n                    \"id\": \"3EB0BB36xxxx\"\n                },\n                \"message\": {\n                    \"conversation\": \"yhh hyyk\"\n                },\n                \"messageTimestamp\": \"1631456905\",\n                \"status\": \"READ\",\n                \"messageC2STimestamp\": \"1631456951\"\n            },\n            ...\n        ],\n        \"cursor\": {\n            \"id\": \"3EB0BB36xxxx\",\n            \"fromMe\": true\n        }\n    }\n}"
+						},
+						{
+							"name": "Response Failed",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/chat/get/:jid?id=john&limit=25&cursor_id=3EB0BB36xxxx&cursor_fromMe=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"chat",
+										"get",
+										":jid"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "john"
+										},
+										{
+											"key": "limit",
+											"value": "25"
+										},
+										{
+											"key": "cursor_id",
+											"value": "3EB0BB36xxxx"
+										},
+										{
+											"key": "cursor_fromMe",
+											"value": "true"
+										}
+									],
+									"variable": [
+										{
+											"key": "jid",
+											"value": "628231xxxxxx@s.whatsapp.net"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35710"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8b7e-XPLXLXMP45hrsYDTttriAiWMxpQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Jan 2022 17:30:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Failed to load messages.\",\n    \"data\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Send  Text Message",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "receiver",
+									"value": "628231xxxxxx",
+									"description": "The receiver phone number in format: [Country Code Without + Sign][Phone Number]. Example: 628231xxxxxx.",
+									"type": "default"
+								},
+								{
+									"key": "message",
+									"value": "Hello there!",
+									"description": "Your message.",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/chat/send?id=john",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"chat",
+								"send"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "john",
+									"description": "Your created session id."
+								}
+							]
+						},
+						"description": "Send text message to a person."
+					},
+					"response": [
+						{
+							"name": "Response Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "receiver",
+											"value": "628231xxxxxxx",
+											"type": "default"
+										},
+										{
+											"key": "message",
+											"value": "Hello there!",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/chat/send?id=john",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"chat",
+										"send"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "john",
+											"description": "Your created session id."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-ZvkGSI8StDnkSjZX5UQTQVUBqSQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Jan 2022 17:54:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"The message has been successfully sent.\",\n    \"data\": {}\n}"
+						},
+						{
+							"name": "Response Failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "receiver",
+											"value": "62823xxxxxx",
+											"type": "default"
+										},
+										{
+											"key": "message",
+											"value": "Hello there!",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/chat/send?id=john",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"chat",
+										"send"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "john"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "67"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"43-VVa944bJzICOqHAXbrMtuGViNDY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Jan 2022 17:52:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Failed to send the message.\",\n    \"data\": {}\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Group",
+			"item": [
+				{
+					"name": "Get Chat List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/group/get?id=john",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"group",
+								"get"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "john",
+									"description": "Your created session id."
+								}
+							]
+						},
+						"description": "Get group chat list."
+					},
+					"response": [
+						{
+							"name": "Response Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/group/get?id=john",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"group",
+										"get"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "john"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "939"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3ab-3D2gyjulySXytncMgb4kbumrQt4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Jan 2022 17:24:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"jid\": \"62895xxxxx-16310xxxx@g.us\",\n            \"count\": 0,\n            \"name\": \"Night Party\",\n            \"t\": 1641051135,\n            \"mute\": \"0\",\n            \"message\": \"true\",\n            \"spam\": \"false\"\n        },\n        ...\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Conversation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/group/get/:jid?id=john&limit=25&cursor_id=6859FD4B19D95D0EB0CA05FA0xxxxxxx&cursor_fromMe=true",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"group",
+								"get",
+								":jid"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "john",
+									"description": "Your created session id."
+								},
+								{
+									"key": "limit",
+									"value": "25",
+									"description": "Limit data length. Default: 25 (Optional)."
+								},
+								{
+									"key": "cursor_id",
+									"value": "6859FD4B19D95D0EB0CA05FA0xxxxxxx",
+									"description": "Cursor id field (Optional)."
+								},
+								{
+									"key": "cursor_fromMe",
+									"value": "true",
+									"description": "Cursor fromMe field (Optional)."
+								}
+							],
+							"variable": [
+								{
+									"key": "jid",
+									"value": "628950xxxxxx-163109xxxx@g.us",
+									"description": "Chat jid."
+								}
+							]
+						},
+						"description": "Load conversation in a group in paginated manner."
+					},
+					"response": [
+						{
+							"name": "Response Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/group/get/:jid?id=john&limit=25&cursor_id=6859FD4B19D95D0EB0CA05FA0xxxxxxx&cursor_fromMe=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"group",
+										"get",
+										":jid"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "john"
+										},
+										{
+											"key": "limit",
+											"value": "25"
+										},
+										{
+											"key": "cursor_id",
+											"value": "6859FD4B19D95D0EB0CA05FA0xxxxxxx"
+										},
+										{
+											"key": "cursor_fromMe",
+											"value": "true"
+										}
+									],
+									"variable": [
+										{
+											"key": "jid",
+											"value": "628950xxxxxx-163109xxxx@g.us"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35710"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8b7e-XPLXLXMP45hrsYDTttriAiWMxpQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Jan 2022 17:30:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"messages\": [\n            {\n                \"key\": {\n                    \"remoteJid\": \"62895xxxxxx-16310xxxx@g.us\",\n                    \"fromMe\": true,\n                    \"id\": \"C4A812BB20EF0D546EE1F7xxxxxxxx\"\n                },\n                \"message\": {\n                    \"conversation\": \"ya\"\n                },\n                \"messageTimestamp\": \"1631184615\",\n                \"status\": \"READ\"\n            },\n            ...\n        ],\n        \"cursor\": {\n            \"id\": \"6859FD4B19D95D0EB0CA05FA0xxxxxxx\",\n            \"fromMe\": true\n        }\n    }\n}"
+						},
+						{
+							"name": "Response Failed",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/group/get/:jid?id=john&limit=25&cursor_id=6859FD4B19D95D0EB0CA05FA0xxxxxxx&cursor_fromMe=true",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"group",
+										"get",
+										":jid"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "john"
+										},
+										{
+											"key": "limit",
+											"value": "25"
+										},
+										{
+											"key": "cursor_id",
+											"value": "6859FD4B19D95D0EB0CA05FA0xxxxxxx"
+										},
+										{
+											"key": "cursor_fromMe",
+											"value": "true"
+										}
+									],
+									"variable": [
+										{
+											"key": "jid",
+											"value": "628950xxxxxx-163109xxxx@g.us"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35710"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8b7e-XPLXLXMP45hrsYDTttriAiWMxpQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Jan 2022 17:30:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Failed to load messages.\",\n    \"data\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Send  Text Message",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "receiver",
+									"value": "628950xxxxxx-16310xxxxx",
+									"description": "The group jid. Example: 628950xxxxxx-16310xxxxx.",
+									"type": "default"
+								},
+								{
+									"key": "message",
+									"value": "Hello there!",
+									"description": "Your message.",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/group/send?id=john",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"group",
+								"send"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "john",
+									"description": "Your created session id."
+								}
+							]
+						},
+						"description": "Send text message to a group."
+					},
+					"response": [
+						{
+							"name": "Response Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "receiver",
+											"value": "628950xxxxxx-16310xxxxx",
+											"type": "default"
+										},
+										{
+											"key": "message",
+											"value": "Hello there!",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/group/send?id=john",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"group",
+										"send"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "john"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-ZvkGSI8StDnkSjZX5UQTQVUBqSQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Jan 2022 17:54:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"The message has been successfully sent.\",\n    \"data\": {}\n}"
+						},
+						{
+							"name": "Response Failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "receiver",
+											"value": "628950xxxxxx-16310xxxxx",
+											"type": "default"
+										},
+										{
+											"key": "message",
+											"value": "Hello there!",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/group/send?id=john",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"group",
+										"send"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "john"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "67"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"43-VVa944bJzICOqHAXbrMtuGViNDY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 01 Jan 2022 17:52:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Failed to send the message.\",\n    \"data\": {}\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
