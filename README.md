@@ -14,7 +14,7 @@ An implementation of [@adiwajshing/Baileys](https://github.com/adiwajshing/Baile
 ```bash
 git clone https://github.com/saifulcoder/laravel-whatsapp-server.git
 ```
-2. Enter directory project `cd laravel-wa-server`
+2. Enter directory project `cd laravel-whatsapp-server`
 3. Execute `composer install` to install the dependencies.
 4. Setting the database configuration, rename `.env.example` to `.env` and open file at project root directory
 ```bash
