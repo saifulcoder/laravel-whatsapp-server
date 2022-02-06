@@ -1,6 +1,5 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-# Baileys Restful API Laravel
+# Baileys Restful API with Laravel
 An implementation of [@adiwajshing/Baileys] (https://github.com/adiwajshing/Baileys) as a simple RESTful API service with multiple device support.
 
 ## Credits
@@ -8,15 +7,12 @@ An implementation of [@adiwajshing/Baileys] (https://github.com/adiwajshing/Bail
 2. Admin Panel : Crudbooster
 3. Backend Server : [@ookamiiixd/baileys-api](https://github.com/ookamiiixd/baileys-api)
 
-## Requirement
-
-
 
 ## Frontend Installation
 
 1. You can install the package via composer:
 ```bash
-composer require saifulcoder/laravel-wa-server
+composer create-project saifulcoder/laravel-wa-server laravel-wa-server 
 ```
 2. Execute `npm i` to install the dependencies.
 3. Setting the database configuration, open `.env` file at project root directory
@@ -37,6 +33,13 @@ php artisan migrate
 ```bash
 php artisan serve --port=80
 ```
+7. Dashboard Admin 
+```bash
+/admin/login
+```
+default email : admin@crudbooster.com
+default password : 123456
+
 
 ## Backend Installation 
 
@@ -47,7 +50,7 @@ Simple RESTful WhatsApp API by [@ookamiiixd/baileys-api](https://github.com/ooka
 3. You can start the app by executing `npm run start` or `node .`.
 4. Now the endpoint should be available according to your environment variable settings. Default is at `http://localhost:8000`.
 
-## Backend API DOCs
+### Backend API DOCs
 
 The API documentation is available online at [here](https://documenter.getpostman.com/view/18988925/UVRHiNne). You can also import the **Postman Collection File** `(postman_collection.json)` into your Postman App alternatively.
 
@@ -61,7 +64,7 @@ The server will respond in JSON format:
 }
 ```
 
-## Functions laravel-wa-server
+# Functions laravel-wa-server
 
 |                                                               |   |
 |---------------------------------------------------------------|---|
