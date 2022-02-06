@@ -44,7 +44,7 @@
 			$this->form = [];
 			$this->form[] = ['label'=>'Number','name'=>'number','type'=>'number','validation'=>'required|min:1','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Name','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
+			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'text','validation'=>'max:255','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
@@ -132,7 +132,7 @@
 	    }
 	    public function hook_before_delete($id) {
 			$d = DB::table('device')->select('name')->where('id',$id)->first();
-			Http::get(env('URL_WA_SERVER').'/session/delete/'.$d->name);
+			Http::delete(env('URL_WA_SERVER').'/session/delete/'.$d->name);
 
 	    }
 	    public function hook_after_delete($id) {

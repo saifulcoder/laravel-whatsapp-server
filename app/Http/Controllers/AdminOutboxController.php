@@ -79,9 +79,17 @@
 	    }
 	    public function hook_before_add(&$postdata) { 
 
+			$getnumber = substr($postdata['number'], 1);
+			$regional = 62;
+			if($getnumber == 0 || $getnumber == 8 ){
+				$format_number = $regional.substr($postdata['number'], 1);
+			}else{
+				$format_number = $postdata['number'];
+			}
+
 			$device = DB::table('device')->select('name')->where('id',$postdata['id_device'])->first();
 			$response = Http::post(env('URL_WA_SERVER').'/chat/send?id='.$device->name, [
-				'receiver' => $postdata['number'],
+				'receiver' => $format_number,
 				'message' => $postdata['text']]);
 			$res = json_decode($response->getBody());
 			$postdata['status'] = $res->success;
