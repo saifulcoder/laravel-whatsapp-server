@@ -1,6 +1,6 @@
 
 # Baileys Restful API with Laravel
-An implementation of [@adiwajshing/Baileys] (https://github.com/adiwajshing/Baileys) as a simple RESTful API service with multiple device support.
+An implementation of [@adiwajshing/Baileys](https://github.com/adiwajshing/Baileys) as a simple RESTful API service with multiple device support.
 
 ## Credits
 1. Framework : Laravel 8
@@ -12,28 +12,29 @@ An implementation of [@adiwajshing/Baileys] (https://github.com/adiwajshing/Bail
 
 1. First clone or download this repository:
 ```bash
-git clone https://github.com/saifulcoder/laravel-wa-server.git
+git clone https://github.com/saifulcoder/laravel-whatsapp-server.git
 ```
-2. Execute `npm i` to install the dependencies.
-3. Setting the database configuration, rename `.env.example` to `.env` and open file at project root directory
+2. Enter directory project `cd laravel-whatsapp-server`
+3. Execute `npm i` to install the dependencies.
+4. Setting the database configuration, rename `.env.example` to `.env` and open file at project root directory
 ```bash
 DB_DATABASE=**your_db_name**
 DB_USERNAME=**your_db_user**
 DB_PASSWORD=**password**
 ```
-4. Setting the URL backend server configuration, open `.env` file at project root directory
+5. Setting the URL backend server configuration, open `.env` file at project root directory
 ```bash
 URL_WA_SERVER=http://localhost:8000
 ```
-5. Create the media-table by running the migrations:
+6. Create the media-table by running the migrations:
 ```bash
 php artisan migrate
 ```
-6. run laravel
+7. run laravel
 ```bash
 php artisan serve --port=80
 ```
-7. Dashboard Admin 
+8. Dashboard Admin 
 ```bash
 /admin/login
 ```
