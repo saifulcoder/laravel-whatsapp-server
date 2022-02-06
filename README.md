@@ -2,9 +2,15 @@
 
 # Baileys Restful API Laravel
 An implementation of [@adiwajshing/Baileys] (https://github.com/adiwajshing/Baileys) as a simple RESTful API service with multiple device support.
+
+## Credits
 1. Framework : Laravel 8
 2. Admin Panel : Crudbooster
-3. Backend : [@ookamiiixd/baileys-api](https://github.com/ookamiiixd/baileys-api)
+3. Backend Server : [@ookamiiixd/baileys-api](https://github.com/ookamiiixd/baileys-api)
+
+## Requirement
+
+
 
 ## Frontend Installation
 
@@ -60,8 +66,11 @@ The server will respond in JSON format:
 |                                                               |   |
 |---------------------------------------------------------------|---|
 | Multiple Device                                               | ✔ |
-| 🚻 Automatic QR Refresh                                       | ✔ |
-| 📁 Send **text**                                              | ✔ |
+| 📁 Send **text**                                             | ✔ |
+| Admin Panel                                                  | ✔ |
+| Multiple Users                                                | ✔ |
+| User Privilege                                              | ✔ |
+| API RESTFul                                              | ✔ |
 | 📁 Send **image, video, audio and docs**                      | coming soon |
 | Send Buttons                                                  | coming soon |
 | Send stickers                                                 | coming soon |
@@ -71,9 +80,11 @@ The server will respond in JSON format:
 | Receive message                                               | coming soon |
 | Get Chat List                                                | coming soon |
 | Get Chat Conversation                                         | coming soon |
-| WebHook                                                    | coming soon |
+| Webhook                                                    | coming soon |
 
 ## Contributing
 
 This project helps you and you want to help keep it going? Buy me a coffee:
-<a href="https://www.buymeacoffee.com/saifulcoder" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 61px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+<br> <a href="https://www.buymeacoffee.com/saifulcoder" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 61px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a><br>
+or via <br>
+<a href="https://saweria.co/saifulcoder">https://saweria.co/saifulcoder</a>
