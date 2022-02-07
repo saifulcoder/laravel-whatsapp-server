@@ -26,11 +26,15 @@ DB_PASSWORD=**password**
 ```bash
 URL_WA_SERVER=http://localhost:8000
 ```
-6. Run laravel
+6. Run the following command at the terminal:
+```bash
+ php artisan migrate:fresh --seed
+```
+7. Run laravel
 ```bash
 php artisan serve --port=80
 ```
-7. Dashboard Admin 
+8. Dashboard Admin 
 ```bash
 /admin/login
 ```
