@@ -14,6 +14,53 @@ class CreateLaravelWaServerTable extends Migration
      */
     public function up()
     {
+		Schema::dropIfExists('whatsapp_log');
+
+        Schema::dropIfExists('users');
+
+        Schema::dropIfExists('personal_access_tokens');
+
+        Schema::dropIfExists('password_resets');
+
+        Schema::dropIfExists('outbox');
+
+        Schema::dropIfExists('failed_jobs');
+
+        Schema::dropIfExists('device');
+
+        Schema::dropIfExists('contact');
+
+        Schema::dropIfExists('cms_users');
+
+        Schema::dropIfExists('cms_statistics');
+
+        Schema::dropIfExists('cms_statistic_components');
+
+        Schema::dropIfExists('cms_settings');
+
+        Schema::dropIfExists('cms_privileges_roles');
+
+        Schema::dropIfExists('cms_privileges');
+
+        Schema::dropIfExists('cms_notifications');
+
+        Schema::dropIfExists('cms_moduls');
+
+        Schema::dropIfExists('cms_menus_privileges');
+
+        Schema::dropIfExists('cms_menus');
+
+        Schema::dropIfExists('cms_logs');
+
+        Schema::dropIfExists('cms_email_templates');
+
+        Schema::dropIfExists('cms_email_queues');
+
+        Schema::dropIfExists('cms_dashboard');
+
+        Schema::dropIfExists('cms_apikey');
+
+        Schema::dropIfExists('cms_apicustom');
         Schema::create('cms_apicustom', function (Blueprint $table) {
             $table->increments('id');
             $table->string('permalink')->nullable();

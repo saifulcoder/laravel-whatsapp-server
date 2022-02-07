@@ -38,7 +38,7 @@ php artisan serve --port=80
 ```bash
 /admin/login
 ```
-default email : admin@crudbooster.com
+default email : admin@crudbooster.com <br>
 default password : 123456
 
 
