@@ -26,15 +26,11 @@ DB_PASSWORD=**password**
 ```bash
 URL_WA_SERVER=http://localhost:8000
 ```
-6. Create the media-table by running the migrations:
-```bash
-php artisan migrate
-```
-7. run laravel
+6. Run laravel
 ```bash
 php artisan serve --port=80
 ```
-8. Dashboard Admin 
+7. Dashboard Admin 
 ```bash
 /admin/login
 ```
