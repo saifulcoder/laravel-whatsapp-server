@@ -102,16 +102,19 @@
 	    }
 	    public function hook_query_index(&$query) {
 	            $getdata = DB::table('device')->select('name')->get();
+				// dd($getdata);
 				foreach ($getdata as $cek){
-					$find = Http::get(env('URL_WA_SERVER').'/session/find/'.$cek->nama);
+					$find = Http::get(env('URL_WA_SERVER').'/session/find/'.$cek->name);
 					$getres = json_decode($find->getBody());
+					// dd($getres->success);
 						if($getres->success == true){
-							DB::table('device')->where('name', $cek->nama)->update(['status' => 'connected','updated_at' => now()]);
+							$status= "connected";
 						}
-						else
+						else if($getres->success == false)
 						{
-							DB::table('device')->where('name', $cek->nama)->update(['status' => 'disconnected','updated_at' => now()]);
+							$status= "disconnected";
 						}
+						DB::table('device')->where('name', $cek->name)->update(['status' => $status,'updated_at' => now()]);
 				}
 	    }
 	    public function hook_row_index($column_index,&$column_value) {	        
