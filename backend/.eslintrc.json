@@ -16,7 +16,8 @@
         "no-unused-expressions": ["error", { "allowTernary": true }],
         "curly": "error",
         "new-cap": "off",
-        "no-return-assign": "off"
+        "no-return-assign": "off",
+        "no-await-in-loop": "off"
     },
     "plugins": ["prettier"]
 }

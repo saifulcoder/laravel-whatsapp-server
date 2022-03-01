@@ -77,14 +77,14 @@
 			$find = Http::get(env('URL_WA_SERVER').'/session/find/'.$name);
 			$cek = json_decode($find->getBody());
 			// dd($cek)
-			if($cek->success == true){
+			if($cek->message == "Session found."){
 				$image = asset('image/connect.gif');
 				DB::table('device')->where('name', $name)->update(['status' => 'connected','updated_at' => now()]);
 				
 			}
 			else{
 				DB::table('device')->where('name', $name)->update(['status' => 'disconnected','updated_at' => now()]);
-				$response = Http::post(env('URL_WA_SERVER').'/session/add', ['id' => $name,]);
+				$response = Http::post(env('URL_WA_SERVER').'/session/add', ['id' => $name, 'isLegacy' => 'true']);
 				$res = json_decode($response->getBody());
 				$image = $res->data->qr;
 			}
@@ -92,7 +92,7 @@
 			$data = [];
 			$data['page_title'] = 'Scan Device';
 			$data['result'] = $image;
-			$data['script_js'] = 'setTimeout(function(){window.location.reload(1);}, 10000);';
+			$data['script_js'] = 'setTimeout(function(){window.location.reload(1);}, 20000);';
 			
 			//Please use view method instead view method from laravel
 			return $this->view('device.scan',$data);
@@ -107,10 +107,10 @@
 					$find = Http::get(env('URL_WA_SERVER').'/session/find/'.$cek->name);
 					$getres = json_decode($find->getBody());
 					// dd($getres->success);
-						if($getres->success == true){
+						if($getres->message == "Session found."){
 							$status= "connected";
 						}
-						else if($getres->success == false)
+						else if($getres->message == "Session not found.")
 						{
 							$status= "disconnected";
 						}

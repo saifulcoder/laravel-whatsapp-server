@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "8651c7ae-5c55-41f1-9707-ca85c60e54e0",
+		"_postman_id": "f135a9fa-8b5c-454e-a5af-7aa9bc5790e1",
 		"name": "Baileys API",
-		"description": "API Documentation for [https://github.com/ookamiiixd/baileys-api](https://github.com/ookamiiixd/baileys-api).",
+		"description": "API Documentation for [https://github.com/ookamiiixd/baileys-api](https://github.com/ookamiiixd/baileys-api/tree/beta-md).",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -53,7 +53,8 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "john"
+											"value": "john",
+											"description": "Your created session id."
 										}
 									]
 								}
@@ -80,7 +81,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 01 Jan 2022 17:22:22 GMT"
+									"value": "Mon, 14 Feb 2022 13:37:26 GMT"
 								},
 								{
 									"key": "Connection",
@@ -140,7 +141,8 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "john"
+											"value": "john",
+											"description": "Your created session id."
 										}
 									]
 								}
@@ -167,7 +169,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 01 Jan 2022 16:56:49 GMT"
+									"value": "Mon, 14 Feb 2022 13:42:04 GMT"
 								},
 								{
 									"key": "Connection",
@@ -199,7 +201,8 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "john"
+											"value": "john",
+											"description": "Your created session id."
 										}
 									]
 								}
@@ -226,7 +229,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 01 Jan 2022 17:05:21 GMT"
+									"value": "Mon, 14 Feb 2022 13:39:45 GMT"
 								},
 								{
 									"key": "Connection",
@@ -255,6 +258,12 @@
 									"value": "john",
 									"description": "Session id you want to use.",
 									"type": "default"
+								},
+								{
+									"key": "isLegacy",
+									"value": "false",
+									"description": "Client type. Value: 'true' (Normal WhatsApp Web / Legacy) or 'false' (Beta Multi-Device).\n",
+									"type": "text"
 								}
 							]
 						},
@@ -282,7 +291,14 @@
 										{
 											"key": "id",
 											"value": "john",
+											"description": "Session id you want to use.",
 											"type": "default"
+										},
+										{
+											"key": "isLegacy",
+											"value": "false",
+											"description": "Client type. Value: 'true' (Normal WhatsApp Web / Legacy) or 'false' (Beta Multi-Device).\n",
+											"type": "text"
 										}
 									]
 								},
@@ -311,15 +327,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "4426"
+									"value": "6566"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"114a-/EHK17Jlxhse5i8m/e3cc8moruQ\""
+									"value": "W/\"19a6-vzlGWUlBSFJ765YPTkwCU1ZRPMw\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 01 Jan 2022 17:12:26 GMT"
+									"value": "Mon, 14 Feb 2022 13:40:50 GMT"
 								},
 								{
 									"key": "Connection",
@@ -331,7 +347,76 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"success\": true,\n    \"message\": \"QR code received, please scan the QR code.\",\n    \"data\": {\n        \"qr\": \"data:image/png;base64,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\"\n    }\n}"
+							"body": "{\n    \"success\": true,\n    \"message\": \"QR code received, please scan the QR code.\",\n    \"data\": {\n        \"qr\": \"data:image/png;base64,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\"\n    }\n}"
+						},
+						{
+							"name": "Duplicate Session ID",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "john",
+											"description": "Session id you want to use.",
+											"type": "default"
+										},
+										{
+											"key": "isLegacy",
+											"value": "false",
+											"description": "Client type. Value: 'true' (Normal WhatsApp Web / Legacy) or 'false' (Beta Multi-Device).\n",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/session/add",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"session",
+										"add"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-me8/2a7Yu/zUpld2FLOxphmzhLE\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Feb 2022 13:42:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Session already exists, please use another id.\",\n    \"data\": {}\n}"
 						},
 						{
 							"name": "Response Failed",
@@ -344,7 +429,14 @@
 										{
 											"key": "id",
 											"value": "john",
+											"description": "Session id you want to use.",
 											"type": "default"
+										},
+										{
+											"key": "isLegacy",
+											"value": "false",
+											"description": "Client type. Value: 'true' (Normal WhatsApp Web / Legacy) or 'false' (Beta Multi-Device).\n",
+											"type": "text"
 										}
 									]
 								},
@@ -373,15 +465,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "4426"
+									"value": "65"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"114a-/EHK17Jlxhse5i8m/e3cc8moruQ\""
+									"value": "W/\"41-yr9kXk0+HoqFsLUzFrS67vhNCpo\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 01 Jan 2022 17:12:26 GMT"
+									"value": "Mon, 14 Feb 2022 13:44:20 GMT"
 								},
 								{
 									"key": "Connection",
@@ -444,7 +536,8 @@
 									"query": [
 										{
 											"key": "id",
-											"value": "john"
+											"value": "john",
+											"description": "Your created session id."
 										}
 									]
 								}
@@ -463,15 +556,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "939"
+									"value": "24103"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"3ab-3D2gyjulySXytncMgb4kbumrQt4\""
+									"value": "W/\"5e27-GvFZTma/gJIMYSu3bl/1hVF6MFc\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 01 Jan 2022 17:24:51 GMT"
+									"value": "Mon, 14 Feb 2022 13:48:04 GMT"
 								},
 								{
 									"key": "Connection",
@@ -483,7 +576,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"jid\": \"628231xxxxxxx@s.whatsapp.net\",\n            \"count\": 0,\n            \"name\": \"John Doe\",\n            \"t\": 1641051172,\n            \"mute\": \"0\",\n            \"message\": \"true\",\n            \"modify_tag\": \"19xxxx\",\n            \"spam\": \"false\"\n        },\n        ...\n    ]\n}"
+							"body": "{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"id\": \"628812xxxxx@s.whatsapp.net\",\n            \"unreadCount\": 1,\n            \"readOnly\": false,\n            \"ephemeralExpiration\": 0,\n            \"conversationTimestamp\": \"1644843624\",\n            \"notSpam\": true,\n            \"disappearingMode\": {\n                \"initiator\": \"CHANGED_IN_CHAT\"\n            },\n            \"unreadMentionCount\": 0,\n            \"contactPrimaryIdentityKey\": \"REDACTED\"\n        },\n        ...\n    ]\n}"
 						}
 					]
 				},
@@ -493,7 +586,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/chat/get/:jid?id=john&limit=25&cursor_id=3EB0BB36xxxx&cursor_fromMe=true",
+							"raw": "{{base_url}}/chat/get/:jid?id=john&limit=25&cursor_id=REDACTED&cursor_fromMe=true",
 							"host": [
 								"{{base_url}}"
 							],
@@ -515,19 +608,19 @@
 								},
 								{
 									"key": "cursor_id",
-									"value": "3EB0BB36xxxx",
-									"description": "Cursor id field (Optional)."
+									"value": "REDACTED",
+									"description": "id field from message key used as cursor to fetch previous messages (Optional)."
 								},
 								{
 									"key": "cursor_fromMe",
 									"value": "true",
-									"description": "Cursor fromMe field (Optional)."
+									"description": "fromMe field from message key used as cursor to fetch previous messages. Value: 'true' or 'false', default: 'false' (Optional)."
 								}
 							],
 							"variable": [
 								{
 									"key": "jid",
-									"value": "628231xxxxx@s.whatsapp.net",
+									"value": "6289509472837@s.whatsapp.net",
 									"description": "Chat jid."
 								}
 							]
@@ -541,7 +634,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/chat/get/:jid?id=john&limit=25&cursor_id=3EB0BB36xxxx&cursor_fromMe=true",
+									"raw": "{{base_url}}/chat/get/:jid?id=john&limit=25&cursor_id=REDACTED",
 									"host": [
 										"{{base_url}}"
 									],
@@ -553,25 +646,25 @@
 									"query": [
 										{
 											"key": "id",
-											"value": "john"
+											"value": "john",
+											"description": "Your created session id."
 										},
 										{
 											"key": "limit",
-											"value": "25"
+											"value": "25",
+											"description": "Limit data length. Default: 25 (Optional)."
 										},
 										{
 											"key": "cursor_id",
-											"value": "3EB0BB36xxxx"
-										},
-										{
-											"key": "cursor_fromMe",
-											"value": "true"
+											"value": "REDACTED",
+											"description": "id from any message key used as cursor to fetch previous messages (Optional)."
 										}
 									],
 									"variable": [
 										{
 											"key": "jid",
-											"value": "628231xxxxxx@s.whatsapp.net"
+											"value": "6289509xxxxx@s.whatsapp.net",
+											"description": "Chat jid."
 										}
 									]
 								}
@@ -590,15 +683,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "35710"
+									"value": "412"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"8b7e-XPLXLXMP45hrsYDTttriAiWMxpQ\""
+									"value": "W/\"19c-h/anIXQxB+0YE+KNxkgNf2rzj5Y\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 01 Jan 2022 17:30:17 GMT"
+									"value": "Mon, 14 Feb 2022 13:52:15 GMT"
 								},
 								{
 									"key": "Connection",
@@ -610,7 +703,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"messages\": [\n            {\n                \"key\": {\n                    \"remoteJid\": \"628231xxxxxx@s.whatsapp.net\",\n                    \"fromMe\": true,\n                    \"id\": \"3EB0BB36xxxx\"\n                },\n                \"message\": {\n                    \"conversation\": \"yhh hyyk\"\n                },\n                \"messageTimestamp\": \"1631456905\",\n                \"status\": \"READ\",\n                \"messageC2STimestamp\": \"1631456951\"\n            },\n            ...\n        ],\n        \"cursor\": {\n            \"id\": \"3EB0BB36xxxx\",\n            \"fromMe\": true\n        }\n    }\n}"
+							"body": "{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"key\": {\n                \"remoteJid\": \"628950xxxxx@s.whatsapp.net\",\n                \"fromMe\": true,\n                \"id\": \"REDACTED\"\n            },\n            \"message\": {\n                \"conversation\": \"Hello there!\"\n            },\n            \"messageTimestamp\": \"1631510231\",\n            \"status\": \"READ\",\n            \"messageC2STimestamp\": \"1631510232\",\n            \"userReceipt\": [\n                {\n                    \"userJid\": \"628950xxxxx@s.whatsapp.net\",\n                    \"receiptTimestamp\": \"1631510234000\",\n                    \"readTimestamp\": \"1631510939000\",\n                    \"playedTimestamp\": \"0\"\n                }\n            ]\n        },\n        ...\n    ]\n}"
 						},
 						{
 							"name": "Response Failed",
@@ -618,7 +711,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/chat/get/:jid?id=john&limit=25&cursor_id=3EB0BB36xxxx&cursor_fromMe=true",
+									"raw": "{{base_url}}/chat/get/:jid?id=john&limit=25&cursor_id=REDACTED",
 									"host": [
 										"{{base_url}}"
 									],
@@ -630,25 +723,25 @@
 									"query": [
 										{
 											"key": "id",
-											"value": "john"
+											"value": "john",
+											"description": "Your created session id."
 										},
 										{
 											"key": "limit",
-											"value": "25"
+											"value": "25",
+											"description": "Limit data length. Default: 25 (Optional)."
 										},
 										{
 											"key": "cursor_id",
-											"value": "3EB0BB36xxxx"
-										},
-										{
-											"key": "cursor_fromMe",
-											"value": "true"
+											"value": "REDACTED",
+											"description": "id from any message key used as cursor to fetch previous messages (Optional)."
 										}
 									],
 									"variable": [
 										{
 											"key": "jid",
-											"value": "628231xxxxxx@s.whatsapp.net"
+											"value": "6289509xxxxx@s.whatsapp.net",
+											"description": "Chat jid."
 										}
 									]
 								}
@@ -667,15 +760,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "35710"
+									"value": "412"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"8b7e-XPLXLXMP45hrsYDTttriAiWMxpQ\""
+									"value": "W/\"19c-h/anIXQxB+0YE+KNxkgNf2rzj5Y\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 01 Jan 2022 17:30:17 GMT"
+									"value": "Mon, 14 Feb 2022 13:52:15 GMT"
 								},
 								{
 									"key": "Connection",
@@ -701,7 +794,7 @@
 							"urlencoded": [
 								{
 									"key": "receiver",
-									"value": "628231xxxxxx",
+									"value": "628950xxxxx",
 									"description": "The receiver phone number in format: [Country Code Without + Sign][Phone Number]. Example: 628231xxxxxx.",
 									"type": "default"
 								},
@@ -737,25 +830,20 @@
 							"name": "Response Success",
 							"originalRequest": {
 								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/x-www-form-urlencoded",
-										"type": "text"
-									}
-								],
+								"header": [],
 								"body": {
 									"mode": "urlencoded",
 									"urlencoded": [
 										{
 											"key": "receiver",
-											"value": "628231xxxxxxx",
+											"value": "628950xxxxx",
+											"description": "The receiver phone number in format: [Country Code Without + Sign][Phone Number]. Example: 628231xxxxxx.",
 											"type": "default"
 										},
 										{
 											"key": "message",
 											"value": "Hello there!",
+											"description": "Your message.",
 											"type": "default"
 										}
 									]
@@ -800,7 +888,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 01 Jan 2022 17:54:25 GMT"
+									"value": "Mon, 14 Feb 2022 13:57:02 GMT"
 								},
 								{
 									"key": "Connection",
@@ -824,12 +912,14 @@
 									"urlencoded": [
 										{
 											"key": "receiver",
-											"value": "62823xxxxxx",
+											"value": "628950xxxxx",
+											"description": "The receiver phone number in format: [Country Code Without + Sign][Phone Number]. Example: 628231xxxxxx.",
 											"type": "default"
 										},
 										{
 											"key": "message",
 											"value": "Hello there!",
+											"description": "Your message.",
 											"type": "default"
 										}
 									]
@@ -846,7 +936,8 @@
 									"query": [
 										{
 											"key": "id",
-											"value": "john"
+											"value": "john",
+											"description": "Your created session id."
 										}
 									]
 								}
@@ -873,7 +964,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 01 Jan 2022 17:52:08 GMT"
+									"value": "Mon, 14 Feb 2022 13:58:14 GMT"
 								},
 								{
 									"key": "Connection",
@@ -886,6 +977,270 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"success\": false,\n    \"message\": \"Failed to send the message.\",\n    \"data\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Send  Bulk Text Message",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"receiver\": \"628231xxxxx\",\r\n        \"message\": \"Hi bro, how are you?\"\r\n    },\r\n    {\r\n        \"receiver\": \"6281320xxxxx\",\r\n        \"message\": \"I'm fine, thank you.\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/chat/send-bulk?id=john",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"chat",
+								"send-bulk"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "john",
+									"description": "Your created session id."
+								}
+							]
+						},
+						"description": "Send text message to multiple person."
+					},
+					"response": [
+						{
+							"name": "Response Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"receiver\": \"628231xxxxx\",\r\n        \"message\": \"Hi bro, how are you?\"\r\n    },\r\n    {\r\n        \"receiver\": \"6281320xxxxx\",\r\n        \"message\": \"I'm fine, thank you.\"\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/chat/send-bulk?id=john",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"chat",
+										"send-bulk"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "john",
+											"description": "Your created session id."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "96"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"60-f/z6nvDfETHAUZOj+Wj57JGlRLo\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Feb 2022 12:32:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"All messages has been successfully sent.\",\n    \"data\": {}\n}"
+						},
+						{
+							"name": "Response Success With Partial Errors",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"message\": \"Whoops, some parameters is missing!\"\r\n    },\r\n    {\r\n        \"receiver\": \"628231xxxxx\",\r\n        \"message\": \"Hi bro, how are you?\"\r\n    },\r\n    {\r\n        \"receiver\": \"6281234567890\",\r\n        \"message\": \"Looks like your phone number is not exists.\"\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/chat/send-bulk?id=john",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"chat",
+										"send-bulk"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "john",
+											"description": "Your created session id."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "96"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"60-f/z6nvDfETHAUZOj+Wj57JGlRLo\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Feb 2022 12:32:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Some messages has been successfully sent.\",\n    \"data\": {\n        \"errors\": [\n            0,\n            2\n        ]\n    }\n}"
+						},
+						{
+							"name": "Response Failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"message\": \"Whoops, some parameters is missing!\"\r\n    },\r\n    {\r\n        \"receiver\": \"628231xxxxx\",\r\n    },\r\n    {\r\n        \"receiver\": \"6281234567890\",\r\n        \"message\": \"Looks like your phone number is not exists.\"\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/chat/send-bulk?id=john",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"chat",
+										"send-bulk"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "john",
+											"description": "Your created session id."
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "96"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"60-f/z6nvDfETHAUZOj+Wj57JGlRLo\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Feb 2022 12:32:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Failed to send all messages.\",\n    \"data\": {\n        \"errors\": [\n            0,\n            1,\n            2\n        ]\n    }\n}"
 						}
 					]
 				}
@@ -936,7 +1291,8 @@
 									"query": [
 										{
 											"key": "id",
-											"value": "john"
+											"value": "john",
+											"description": "Your created session id."
 										}
 									]
 								}
@@ -955,15 +1311,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "939"
+									"value": "2540"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"3ab-3D2gyjulySXytncMgb4kbumrQt4\""
+									"value": "W/\"9ec-dkcBL4TQ52DrQkyrEMlAw+iTs/4\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 01 Jan 2022 17:24:51 GMT"
+									"value": "Mon, 14 Feb 2022 14:05:38 GMT"
 								},
 								{
 									"key": "Connection",
@@ -975,7 +1331,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"jid\": \"62895xxxxx-16310xxxx@g.us\",\n            \"count\": 0,\n            \"name\": \"Night Party\",\n            \"t\": 1641051135,\n            \"mute\": \"0\",\n            \"message\": \"true\",\n            \"spam\": \"false\"\n        },\n        ...\n    ]\n}"
+							"body": "{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"id\": \"628950xxxxx-16310xxxxx@g.us\",\n            \"unreadCount\": 0,\n            \"readOnly\": false,\n            \"ephemeralExpiration\": 0,\n            \"conversationTimestamp\": \"1644825488\",\n            \"name\": \"Raventale\",\n            \"pHash\": \"xxxxx\",\n            \"notSpam\": true,\n            \"unreadMentionCount\": 0\n        },\n        ...\n    ]\n}"
 						}
 					]
 				},
@@ -985,7 +1341,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/group/get/:jid?id=john&limit=25&cursor_id=6859FD4B19D95D0EB0CA05FA0xxxxxxx&cursor_fromMe=true",
+							"raw": "{{base_url}}/group/get/:jid?id=john&limit=25&cursor_id=REDACTED&cursor_fromMe=true",
 							"host": [
 								"{{base_url}}"
 							],
@@ -1007,20 +1363,20 @@
 								},
 								{
 									"key": "cursor_id",
-									"value": "6859FD4B19D95D0EB0CA05FA0xxxxxxx",
-									"description": "Cursor id field (Optional)."
+									"value": "REDACTED",
+									"description": "id field from message key used as cursor to fetch previous messages (Optional)."
 								},
 								{
 									"key": "cursor_fromMe",
 									"value": "true",
-									"description": "Cursor fromMe field (Optional)."
+									"description": "fromMe field from message key used as cursor to fetch previous messages. Value: 'true' or 'false', default: 'false' (Optional)."
 								}
 							],
 							"variable": [
 								{
 									"key": "jid",
-									"value": "628950xxxxxx-163109xxxx@g.us",
-									"description": "Chat jid."
+									"value": "628950xxxxx-16310xxxxx@g.us",
+									"description": "Group jid."
 								}
 							]
 						},
@@ -1033,7 +1389,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/group/get/:jid?id=john&limit=25&cursor_id=6859FD4B19D95D0EB0CA05FA0xxxxxxx&cursor_fromMe=true",
+									"raw": "{{base_url}}/group/get/:jid?id=john&limit=25&cursor_id=REDACTED",
 									"host": [
 										"{{base_url}}"
 									],
@@ -1045,25 +1401,25 @@
 									"query": [
 										{
 											"key": "id",
-											"value": "john"
+											"value": "john",
+											"description": "Your created session id."
 										},
 										{
 											"key": "limit",
-											"value": "25"
+											"value": "25",
+											"description": "Limit data length. Default: 25 (Optional)."
 										},
 										{
 											"key": "cursor_id",
-											"value": "6859FD4B19D95D0EB0CA05FA0xxxxxxx"
-										},
-										{
-											"key": "cursor_fromMe",
-											"value": "true"
+											"value": "REDACTED",
+											"description": "id from message key used as cursor to fetch previous messages (Optional)."
 										}
 									],
 									"variable": [
 										{
 											"key": "jid",
-											"value": "628950xxxxxx-163109xxxx@g.us"
+											"value": "628950xxxxx-16310xxxxx@g.us",
+											"description": "Group jid."
 										}
 									]
 								}
@@ -1082,15 +1438,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "35710"
+									"value": "1197"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"8b7e-XPLXLXMP45hrsYDTttriAiWMxpQ\""
+									"value": "W/\"4ad-7HAPLYY7YLdKVWwL9fjgeUM2CJs\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 01 Jan 2022 17:30:17 GMT"
+									"value": "Mon, 14 Feb 2022 14:08:52 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1102,7 +1458,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"messages\": [\n            {\n                \"key\": {\n                    \"remoteJid\": \"62895xxxxxx-16310xxxx@g.us\",\n                    \"fromMe\": true,\n                    \"id\": \"C4A812BB20EF0D546EE1F7xxxxxxxx\"\n                },\n                \"message\": {\n                    \"conversation\": \"ya\"\n                },\n                \"messageTimestamp\": \"1631184615\",\n                \"status\": \"READ\"\n            },\n            ...\n        ],\n        \"cursor\": {\n            \"id\": \"6859FD4B19D95D0EB0CA05FA0xxxxxxx\",\n            \"fromMe\": true\n        }\n    }\n}"
+							"body": "{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"key\": {\n                \"remoteJid\": \"628950xxxxx-16310xxxxx@g.us\",\n                \"fromMe\": true,\n                \"id\": \"REDACTED\"\n            },\n            \"message\": {\n                \"conversation\": \"Hi guys, how are you?\"\n            },\n            \"messageTimestamp\": \"1644713060\",\n            \"status\": \"READ\",\n            \"userReceipt\": [\n                {\n                    \"userJid\": \"628950xxxxx@s.whatsapp.net\",\n                    \"receiptTimestamp\": \"1644713064000\",\n                    \"readTimestamp\": \"1644713075000\",\n                    \"playedTimestamp\": \"0\"\n                },\n                {\n                    \"userJid\": \"628231xxxxx@s.whatsapp.net\",\n                    \"receiptTimestamp\": \"1644713064000\",\n                    \"readTimestamp\": \"1644713071000\",\n                    \"playedTimestamp\": \"0\"\n                }\n            ]\n        },\n        ...\n    ]\n}"
 						},
 						{
 							"name": "Response Failed",
@@ -1110,7 +1466,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/group/get/:jid?id=john&limit=25&cursor_id=6859FD4B19D95D0EB0CA05FA0xxxxxxx&cursor_fromMe=true",
+									"raw": "{{base_url}}/group/get/:jid?id=john&limit=25&cursor_id=REDACTED",
 									"host": [
 										"{{base_url}}"
 									],
@@ -1122,25 +1478,25 @@
 									"query": [
 										{
 											"key": "id",
-											"value": "john"
+											"value": "john",
+											"description": "Your created session id."
 										},
 										{
 											"key": "limit",
-											"value": "25"
+											"value": "25",
+											"description": "Limit data length. Default: 25 (Optional)."
 										},
 										{
 											"key": "cursor_id",
-											"value": "6859FD4B19D95D0EB0CA05FA0xxxxxxx"
-										},
-										{
-											"key": "cursor_fromMe",
-											"value": "true"
+											"value": "REDACTED",
+											"description": "Cursor id field (Optional)."
 										}
 									],
 									"variable": [
 										{
 											"key": "jid",
-											"value": "628950xxxxxx-163109xxxx@g.us"
+											"value": "628950xxxxx-16310xxxxx@g.us",
+											"description": "Group jid."
 										}
 									]
 								}
@@ -1159,15 +1515,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "35710"
+									"value": "1197"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"8b7e-XPLXLXMP45hrsYDTttriAiWMxpQ\""
+									"value": "W/\"4ad-7HAPLYY7YLdKVWwL9fjgeUM2CJs\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 01 Jan 2022 17:30:17 GMT"
+									"value": "Mon, 14 Feb 2022 14:08:52 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1193,13 +1549,13 @@
 							"urlencoded": [
 								{
 									"key": "receiver",
-									"value": "628950xxxxxx-16310xxxxx",
+									"value": "628950xxxxx-16310xxxxx",
 									"description": "The group jid. Example: 628950xxxxxx-16310xxxxx.",
 									"type": "default"
 								},
 								{
 									"key": "message",
-									"value": "Hello there!",
+									"value": "Hi guys, how are you?",
 									"description": "Your message.",
 									"type": "default"
 								}
@@ -1235,12 +1591,14 @@
 									"urlencoded": [
 										{
 											"key": "receiver",
-											"value": "628950xxxxxx-16310xxxxx",
+											"value": "628950xxxxx-16310xxxxx",
+											"description": "The group jid. Example: 628950xxxxxx-16310xxxxx.",
 											"type": "default"
 										},
 										{
 											"key": "message",
-											"value": "Hello there!",
+											"value": "Hi guys, how are you?",
+											"description": "Your message.",
 											"type": "default"
 										}
 									]
@@ -1257,7 +1615,8 @@
 									"query": [
 										{
 											"key": "id",
-											"value": "john"
+											"value": "john",
+											"description": "Your created session id."
 										}
 									]
 								}
@@ -1284,7 +1643,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 01 Jan 2022 17:54:25 GMT"
+									"value": "Mon, 14 Feb 2022 14:13:52 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1308,12 +1667,14 @@
 									"urlencoded": [
 										{
 											"key": "receiver",
-											"value": "628950xxxxxx-16310xxxxx",
+											"value": "628950xxxxx-16310xxxxx",
+											"description": "The group jid. Example: 628950xxxxxx-16310xxxxx.",
 											"type": "default"
 										},
 										{
 											"key": "message",
-											"value": "Hello there!",
+											"value": "Hi guys, how are you?",
+											"description": "Your message.",
 											"type": "default"
 										}
 									]
@@ -1330,7 +1691,8 @@
 									"query": [
 										{
 											"key": "id",
-											"value": "john"
+											"value": "john",
+											"description": "Your created session id."
 										}
 									]
 								}
@@ -1357,7 +1719,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 01 Jan 2022 17:52:08 GMT"
+									"value": "Mon, 14 Feb 2022 14:14:51 GMT"
 								},
 								{
 									"key": "Connection",

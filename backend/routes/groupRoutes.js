@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { body, query } from 'express-validator'
-import requestValidator from './../middleware/requestValidator.js'
-import sessionValidator from './../middleware/sessionValidator.js'
+import requestValidator from './../middlewares/requestValidator.js'
+import sessionValidator from './../middlewares/sessionValidator.js'
 import * as controller from './../controllers/groupController.js'
 import getMessages from './../controllers/getMessages.js'
 
