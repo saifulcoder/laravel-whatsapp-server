@@ -38,6 +38,7 @@
 			$this->col[] = ["label"=>"Name","name"=>"name"];
 			$this->col[] = ["label"=>"Description","name"=>"description"];
 			$this->col[] = ["label"=>"Status","name"=>"status",'callback_php'=>'($row->status=="connected")?"<span class=\"badge bg-green\">Connected</span>":"<span class=\"badge bg-red\">Disconnected</span>"'];
+			$this->form[] = ['label'=>'Multi Device','name'=>'multidevice','type'=>'select2','validation'=>'required','width'=>'col-sm-10','dataenum'=>'YES;NO'];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
@@ -84,7 +85,14 @@
 			}
 			else{
 				DB::table('device')->where('name', $name)->update(['status' => 'disconnected','updated_at' => now()]);
-				$response = Http::post(env('URL_WA_SERVER').'/session/add', ['id' => $name, 'isLegacy' => 'true']);
+
+				$cekMD = DB::table('device')->select('multidevice')->where('number',$name)->first();
+				if($cekMD->multidevice == "YES"){
+					$islegacy = "false"; 
+				}else{
+					$islegacy = "true"; 
+				}
+				$response = Http::post(env('URL_WA_SERVER').'/session/add', ['id' => $name, 'isLegacy' => $islegacy]);
 				$res = json_decode($response->getBody());
 				$image = $res->data->qr;
 			}
