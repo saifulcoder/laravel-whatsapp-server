@@ -38,14 +38,14 @@
 			$this->col[] = ["label"=>"Name","name"=>"name"];
 			$this->col[] = ["label"=>"Description","name"=>"description"];
 			$this->col[] = ["label"=>"Status","name"=>"status",'callback_php'=>'($row->status=="connected")?"<span class=\"badge bg-green\">Connected</span>":"<span class=\"badge bg-red\">Disconnected</span>"'];
-			$this->form[] = ['label'=>'Multi Device','name'=>'multidevice','type'=>'select2','validation'=>'required','width'=>'col-sm-10','dataenum'=>'YES;NO'];
 			# END COLUMNS DO NOT REMOVE THIS LINE
-
+			
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
 			$this->form[] = ['label'=>'Number','name'=>'number','type'=>'number','validation'=>'required|min:1','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Name','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'text','validation'=>'max:255','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
+			$this->form[] = ['label'=>'Multi Device','name'=>'multidevice','type'=>'select2','validation'=>'required','width'=>'col-sm-10','dataenum'=>'YES;NO'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
