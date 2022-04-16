@@ -242,7 +242,6 @@ class CreateLaravelWaServerTable extends Migration
             $table->integer('id', true);
             $table->string('name')->nullable();
             $table->string('number', 50)->nullable();
-            $table->string('multidevice', 10)->nullable();
             $table->integer('id_users')->nullable();
             $table->integer('id_device')->nullable();
             $table->dateTime('created_at')->nullable();
@@ -256,6 +255,7 @@ class CreateLaravelWaServerTable extends Migration
             $table->string('number', 100)->nullable();
             $table->string('name')->nullable();
             $table->string('description')->nullable();
+			$table->string('multidevice', 10)->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->string('status')->nullable();
