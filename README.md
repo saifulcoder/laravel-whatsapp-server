@@ -7,6 +7,10 @@ An implementation of [@adiwajshing/Baileys](https://github.com/adiwajshing/Baile
 2. Admin Panel : Crudbooster
 3. Backend Server : [@ookamiiixd/baileys-api](https://github.com/ookamiiixd/baileys-api)
 
+## Requirement
+1. php 7.4
+2. MySQL / MariaDB
+3. NodeJs 14 or higher
 
 ## Frontend Installation
 
@@ -26,10 +30,12 @@ DB_PASSWORD=**password**
 ```bash
 URL_WA_SERVER=http://localhost:8000
 ```
-6. Run the following command at the terminal:
+6. Run Migration Database the following command at the terminal:
 ```bash
  php artisan migrate:fresh --seed
 ```
+or you can import db.sql
+
 7. Run laravel
 ```bash
 php artisan serve --port=80
