@@ -13,3 +13,8 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+/backend/node_modules
+/backend3
+/backend2
+/backendnew
+/.history

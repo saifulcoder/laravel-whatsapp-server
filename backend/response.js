@@ -5,6 +5,7 @@ const response = (res, statusCode = 200, success = false, message = '', data = {
         message,
         data,
     })
+
     res.end()
 }
 
