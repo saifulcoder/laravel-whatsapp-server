@@ -5,6 +5,23 @@ const getList = (req, res) => {
     return response(res, 200, true, '', getChatList(res.locals.sessionId, true))
 }
 
+const getGroupMetaData = async (req, res) => {
+    const session = getSession(res.locals.sessionId)
+    const { jid } = req.params
+
+    try {
+        const data = await session.groupMetadata(jid)
+
+        if (!data.id) {
+            return response(res, 400, false, 'The group is not exists.')
+        }
+
+        response(res, 200, true, '', data)
+    } catch {
+        response(res, 500, false, 'Failed to get group metadata.')
+    }
+}
+
 const send = async (req, res) => {
     const session = getSession(res.locals.sessionId)
     const receiver = formatGroup(req.body.receiver)
@@ -17,7 +34,7 @@ const send = async (req, res) => {
             return response(res, 400, false, 'The group is not exists.')
         }
 
-        await sendMessage(session, receiver, { text: message })
+        await sendMessage(session, receiver, message)
 
         response(res, 200, true, 'The message has been successfully sent.')
     } catch {
@@ -25,4 +42,4 @@ const send = async (req, res) => {
     }
 }
 
-export { getList, send }
+export { getList, getGroupMetaData, send }

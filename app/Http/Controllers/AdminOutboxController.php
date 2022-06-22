@@ -20,7 +20,7 @@
 			$this->button_bulk_action = true;
 			$this->button_action_style = "button_icon";
 			$this->button_add = true;
-			$this->button_edit = true;
+			$this->button_edit = false;
 			$this->button_delete = true;
 			$this->button_detail = true;
 			$this->button_show = true;
@@ -35,8 +35,10 @@
 			$this->col[] = ["label"=>"Number","name"=>"number"];
 			$this->col[] = ["label"=>"Text","name"=>"text"];
 			$this->col[] = ["label"=>"Device","name"=>"id_device","join"=>"device,name"];
-			$this->col[] = ["label"=>"Status","name"=>"status",'callback_php'=>'($row->status==1)?"<span class=\"badge bg-green\">Sent</span>":"<span class=\"badge bg-red\">Failed</span>"'];
+			$this->col[] = ["label"=>"Type","name"=>"type"];
+			$this->col[] = ["label"=>"Url File","name"=>"url_file"];
 			$this->col[] = ["label"=>"Time","name"=>"created_at"];
+			$this->col[] = ["label"=>"Status","name"=>"status","callback_php"=>'($row->status==1)?"<span class=\"badge bg-green\">Sent</span>":"<span class=\"badge bg-red\">Failed</span>"'];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
@@ -44,13 +46,16 @@
 			$this->form[] = ['label'=>'Number','name'=>'number','type'=>'text','validation'=>'required|numeric|min:1','width'=>'col-sm-10','help'=>'The receiver phone number in format: [Country Code Without + Sign][Phone Number]. Example: 628231xxxxxx.'];
 			$this->form[] = ['label'=>'Text','name'=>'text','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Device','name'=>'id_device','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'device,name','help'=>'Will show conneted device','datatable_where'=>'status="connected"'];
+			$this->form[] = ['label'=>'Message Type','name'=>'type','type'=>'select','validation'=>'required','width'=>'col-sm-10','dataenum'=>'Text;Image;Video;PDF','default'=>'Text'];
+			$this->form[] = ['label'=>'File','name'=>'url_file','type'=>'upload','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Number','name'=>'number','type'=>'text','validation'=>'required|numeric|min:1','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Number','name'=>'number','type'=>'text','validation'=>'required|numeric|min:1','width'=>'col-sm-10','help'=>'The receiver phone number in format: [Country Code Without + Sign][Phone Number]. Example: 628231xxxxxx.'];
 			//$this->form[] = ['label'=>'Text','name'=>'text','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Device','name'=>'id_device','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'device,name','help'=>'Will show conneted device','datatable_where'=>'status="connected"'];
+			//$this->form[] = ['label'=>'Image','name'=>'urlimage','type'=>'upload','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			$this->sub_module = array();
@@ -88,9 +93,38 @@
 			}
 
 			$device = DB::table('device')->select('name')->where('id',$postdata['id_device'])->first();
-			$response = Http::post(env('URL_WA_SERVER').'/chat/send?id='.$device->name, [
+			// echo "tipe pesan ".$postdata['type'];
+			// Text;Image;Video;PDF
+			// send text
+			if($postdata['type'] == "Text"){
+				$body = ['text'=>$postdata['text']];
+			}
+			else if($postdata['type'] == "Image" ){
+				$body = [
+					'image'=>['url'=>url($postdata['url_file'])],
+					'caption'=>$postdata['text'] 
+				];
+			}
+			else if($postdata['type'] == "Video" ){
+				$body = [
+					'video'=>['url'=>url($postdata['url_file'])],
+					'caption'=>$postdata['text'] 
+				];
+			}
+			else if($postdata['type'] == "PDF" ){
+				$body = [
+					'document'=>['url'=>url($postdata['url_file'])],
+					'mimetype' => 'application/pdf',
+					'fileName' => 'document.pdf'
+				];
+			}
+
+			//send api
+			$response = Http::post(env('URL_WA_SERVER').'/chats/send?id='.$device->name, [
 				'receiver' => $format_number,
-				'message' => $postdata['text']]);
+				'message' => $body
+				]);
+			// dd($response);
 			$res = json_decode($response->getBody());
 			$postdata['status'] = $res->success;
 	    }

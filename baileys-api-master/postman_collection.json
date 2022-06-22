@@ -1,114 +1,27 @@
 {
 	"info": {
 		"_postman_id": "f135a9fa-8b5c-454e-a5af-7aa9bc5790e1",
-		"name": "Baileys API",
-		"description": "API Documentation for [https://github.com/ookamiiixd/baileys-api](https://github.com/ookamiiixd/baileys-api/tree/beta-md).",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"name": "Baileys API v0.2",
+		"description": "API Documentation for [https://github.com/ookamiiixd/baileys-api](https://github.com/ookamiiixd/baileys-api).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18988925"
 	},
 	"item": [
 		{
-			"name": "Session",
+			"name": "Sessions",
 			"item": [
-				{
-					"name": "Delete Session",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{base_url}}/session/delete/:id",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"session",
-								"delete",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "john",
-									"description": "Your created session id."
-								}
-							]
-						},
-						"description": "Delete a session."
-					},
-					"response": [
-						{
-							"name": "Response Success",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{base_url}}/session/delete/:id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
-										"session",
-										"delete",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "john",
-											"description": "Your created session id."
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "81"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"51-sboVGYKvgXknbi2fZx1c7QmxdeM\""
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 14 Feb 2022 13:37:26 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"success\": true,\n    \"message\": \"The session has been successfully deleted.\",\n    \"data\": {}\n}"
-						}
-					]
-				},
 				{
 					"name": "Find Session",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/session/find/:id",
+							"raw": "{{base_url}}/sessions/find/:id",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"session",
+								"sessions",
 								"find",
 								":id"
 							],
@@ -129,12 +42,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/session/find/:id",
+									"raw": "{{base_url}}/sessions/find/:id",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"session",
+										"sessions",
 										"find",
 										":id"
 									],
@@ -189,12 +102,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/session/find/:id",
+									"raw": "{{base_url}}/sessions/find/:id",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"session",
+										"sessions",
 										"find",
 										":id"
 									],
@@ -246,6 +159,98 @@
 					]
 				},
 				{
+					"name": "Session Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/sessions/status/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"sessions",
+								"status",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "john",
+									"description": "Your created session id."
+								}
+							]
+						},
+						"description": "Get session status. The status value is either `authenticated, connecting, connected, disconnecting` or `disconnected`."
+					},
+					"response": [
+						{
+							"name": "Response Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/sessions/status/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"sessions",
+										"status",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "john",
+											"description": "Your created session id."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "63"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3f-RGosI+9nNJliG+uza0vX9GICMuE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 10 Apr 2022 10:20:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": "{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"status\": \"authenticated\"\n    }\n}"
+						}
+					]
+				},
+				{
 					"name": "Create New Session",
 					"request": {
 						"method": "POST",
@@ -268,12 +273,12 @@
 							]
 						},
 						"url": {
-							"raw": "{{base_url}}/session/add",
+							"raw": "{{base_url}}/sessions/add",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"session",
+								"sessions",
 								"add"
 							]
 						},
@@ -303,12 +308,12 @@
 									]
 								},
 								"url": {
-									"raw": "{{base_url}}/session/add",
+									"raw": "{{base_url}}/sessions/add",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"session",
+										"sessions",
 										"add"
 									]
 								}
@@ -372,12 +377,12 @@
 									]
 								},
 								"url": {
-									"raw": "{{base_url}}/session/add",
+									"raw": "{{base_url}}/sessions/add",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"session",
+										"sessions",
 										"add"
 									]
 								}
@@ -441,12 +446,12 @@
 									]
 								},
 								"url": {
-									"raw": "{{base_url}}/session/add",
+									"raw": "{{base_url}}/sessions/add",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"session",
+										"sessions",
 										"add"
 									]
 								}
@@ -488,11 +493,99 @@
 							"body": "{\n    \"success\": false,\n    \"message\": \"Unable to create session.\",\n    \"data\": {}\n}"
 						}
 					]
+				},
+				{
+					"name": "Delete Session",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/sessions/delete/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"sessions",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "john",
+									"description": "Your created session id."
+								}
+							]
+						},
+						"description": "Delete a session."
+					},
+					"response": [
+						{
+							"name": "Response Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/sessions/delete/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"sessions",
+										"delete",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "john",
+											"description": "Your created session id."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "81"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"51-sboVGYKvgXknbi2fZx1c7QmxdeM\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Feb 2022 13:37:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"The session has been successfully deleted.\",\n    \"data\": {}\n}"
+						}
+					]
 				}
 			]
 		},
 		{
-			"name": "Chat",
+			"name": "Chats",
 			"item": [
 				{
 					"name": "Get Chat List",
@@ -500,13 +593,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/chat/get?id=john",
+							"raw": "{{base_url}}/chats?id=john",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"chat",
-								"get"
+								"chats"
 							],
 							"query": [
 								{
@@ -525,13 +617,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/chat/get?id=john",
+									"raw": "{{base_url}}/chats?id=john",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"chat",
-										"get"
+										"chats"
 									],
 									"query": [
 										{
@@ -586,13 +677,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/chat/get/:jid?id=john&limit=25&cursor_id=REDACTED&cursor_fromMe=true",
+							"raw": "{{base_url}}/chats/:jid?id=john&limit=25&cursor_id=REDACTED&cursor_fromMe=true",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"chat",
-								"get",
+								"chats",
 								":jid"
 							],
 							"query": [
@@ -620,7 +710,7 @@
 							"variable": [
 								{
 									"key": "jid",
-									"value": "6289509472837@s.whatsapp.net",
+									"value": "628950xxxxx@s.whatsapp.net",
 									"description": "Chat jid."
 								}
 							]
@@ -634,13 +724,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/chat/get/:jid?id=john&limit=25&cursor_id=REDACTED",
+									"raw": "{{base_url}}/chats/:jid?id=john&limit=25&cursor_id=REDACTED",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"chat",
-										"get",
+										"chats",
 										":jid"
 									],
 									"query": [
@@ -711,13 +800,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/chat/get/:jid?id=john&limit=25&cursor_id=REDACTED",
+									"raw": "{{base_url}}/chats/:jid?id=john&limit=25&cursor_id=REDACTED",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"chat",
-										"get",
+										"chats",
 										":jid"
 									],
 									"query": [
@@ -785,34 +873,33 @@
 					]
 				},
 				{
-					"name": "Send  Text Message",
+					"name": "Send Message",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "receiver",
-									"value": "628950xxxxx",
-									"description": "The receiver phone number in format: [Country Code Without + Sign][Phone Number]. Example: 628231xxxxxx.",
-									"type": "default"
-								},
-								{
-									"key": "message",
-									"value": "Hello there!",
-									"description": "Your message.",
-									"type": "default"
+							"mode": "raw",
+							"raw": "{\r\n    \"receiver\": \"628231xxxxx\", \r\n    \"message\": {\r\n        \"text\": \"hello there!\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
-							"raw": "{{base_url}}/chat/send?id=john",
+							"raw": "{{base_url}}/chats/send?id=john",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"chat",
+								"chats",
 								"send"
 							],
 							"query": [
@@ -823,7 +910,7 @@
 								}
 							]
 						},
-						"description": "Send text message to a person."
+						"description": "Send message to someone."
 					},
 					"response": [
 						{
@@ -832,29 +919,21 @@
 								"method": "POST",
 								"header": [],
 								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "receiver",
-											"value": "628950xxxxx",
-											"description": "The receiver phone number in format: [Country Code Without + Sign][Phone Number]. Example: 628231xxxxxx.",
-											"type": "default"
-										},
-										{
-											"key": "message",
-											"value": "Hello there!",
-											"description": "Your message.",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\r\n    \"receiver\": \"628231xxxxx\", \r\n    \"message\": {\r\n        \"text\": \"hello there!\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
-									"raw": "{{base_url}}/chat/send?id=john",
+									"raw": "{{base_url}}/chats/send?id=john",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"chat",
+										"chats",
 										"send"
 									],
 									"query": [
@@ -888,7 +967,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 14 Feb 2022 13:57:02 GMT"
+									"value": "Fri, 27 May 2022 14:57:19 GMT"
 								},
 								{
 									"key": "Connection",
@@ -906,31 +985,30 @@
 							"name": "Response Failed",
 							"originalRequest": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "receiver",
-											"value": "628950xxxxx",
-											"description": "The receiver phone number in format: [Country Code Without + Sign][Phone Number]. Example: 628231xxxxxx.",
-											"type": "default"
-										},
-										{
-											"key": "message",
-											"value": "Hello there!",
-											"description": "Your message.",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\r\n    \"receiver\": \"628231xxxxx\", \r\n    \"message\": {\r\n        \"text\": \"hello there!\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
-									"raw": "{{base_url}}/chat/send?id=john",
+									"raw": "{{base_url}}/chats/send?id=john",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"chat",
+										"chats",
 										"send"
 									],
 									"query": [
@@ -981,19 +1059,20 @@
 					]
 				},
 				{
-					"name": "Send  Bulk Text Message",
+					"name": "Send  Bulk Message",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\r\n    {\r\n        \"receiver\": \"628231xxxxx\",\r\n        \"message\": \"Hi bro, how are you?\"\r\n    },\r\n    {\r\n        \"receiver\": \"6281320xxxxx\",\r\n        \"message\": \"I'm fine, thank you.\"\r\n    }\r\n]",
+							"raw": "[\r\n    {\r\n        \"receiver\": \"628231xxxxx\", \r\n        \"message\": {\r\n            \"text\": \"hi! how are you?\"\r\n        }\r\n    },\r\n    {\r\n        \"receiver\": \"628950xxxxx\",\r\n        \"delay\": 60000, \r\n        \"message\": {\r\n            \"text\": \"i'm fine, thank you!\"\r\n        }\r\n    }\r\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1001,12 +1080,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/chat/send-bulk?id=john",
+							"raw": "{{base_url}}/chats/send-bulk?id=john",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"chat",
+								"chats",
 								"send-bulk"
 							],
 							"query": [
@@ -1017,7 +1096,7 @@
 								}
 							]
 						},
-						"description": "Send text message to multiple person."
+						"description": "Send message to multiple person.\n\nYou can also set custom `delay` between each message by adding the delay (in milliseconds) to the `delay` properties. Default value is `1000` if you don't provide any delay or you provide an invalid delay.\n\nExample:\n\n``` javascript\n[\n  {\n    \"receiver\": \"628231xxxxx\",\n    // 1000ms / 1 seconds delay before it try to send the message since we don't provide any delay\n    \"message\": {\n      \"text\": \"hi! how are you?\"\n    }\n  },\n  {\n    \"receiver\": \"628950xxxxx\",\n    \"delay\": 60000, // 1 minutes delay before it try to send the message\n    \"message\": {\n      \"text\": \"i'm fine, thank you!\"\n    }\n  }\n]\n\n```"
 					},
 					"response": [
 						{
@@ -1028,12 +1107,13 @@
 									{
 										"key": "Content-Type",
 										"value": "application/json",
-										"type": "text"
+										"type": "text",
+										"disabled": true
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "[\r\n    {\r\n        \"receiver\": \"628231xxxxx\",\r\n        \"message\": \"Hi bro, how are you?\"\r\n    },\r\n    {\r\n        \"receiver\": \"6281320xxxxx\",\r\n        \"message\": \"I'm fine, thank you.\"\r\n    }\r\n]",
+									"raw": "[\r\n    {\r\n        \"receiver\": \"628231xxxxx\", \r\n        \"message\": {\r\n            \"text\": \"hi! how are you?\"\r\n        }\r\n    },\r\n    {\r\n        \"receiver\": \"628950xxxxx\",\r\n        \"delay\": 60000, \r\n        \"message\": {\r\n            \"text\": \"i'm fine, thank you!\"\r\n        }\r\n    }\r\n]",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1041,12 +1121,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/chat/send-bulk?id=john",
+									"raw": "{{base_url}}/chats/send-bulk?id=john",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"chat",
+										"chats",
 										"send-bulk"
 									],
 									"query": [
@@ -1072,15 +1152,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "96"
+									"value": "79"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"60-f/z6nvDfETHAUZOj+Wj57JGlRLo\""
+									"value": "W/\"4f-WZISsPR0zkoRx3Ch/QHgiuzvzWw\""
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 14 Feb 2022 12:32:53 GMT"
+									"value": "Fri, 27 May 2022 15:19:02 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1107,7 +1187,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "[\r\n    {\r\n        \"message\": \"Whoops, some parameters is missing!\"\r\n    },\r\n    {\r\n        \"receiver\": \"628231xxxxx\",\r\n        \"message\": \"Hi bro, how are you?\"\r\n    },\r\n    {\r\n        \"receiver\": \"6281234567890\",\r\n        \"message\": \"Looks like your phone number is not exists.\"\r\n    }\r\n]",
+									"raw": "[\r\n    {\r\n        \"message\": {\r\n            \"text\": \"Whoops, some parameters is missing!\"\r\n        }\r\n    },\r\n    {\r\n        \"receiver\": \"628231xxxxx\", \r\n        \"message\": {\r\n            \"text\": \"yay, i'm sent!\"\r\n        }\r\n    },\r\n    {\r\n        \"receiver\": \"6281234567890\",\r\n        \"message\": {\r\n            \"text\": \"Looks like your phone number is not exists.\"\r\n        }\r\n    }\r\n]",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1115,12 +1195,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/chat/send-bulk?id=john",
+									"raw": "{{base_url}}/chats/send-bulk?id=john",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"chat",
+										"chats",
 										"send-bulk"
 									],
 									"query": [
@@ -1181,7 +1261,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "[\r\n    {\r\n        \"message\": \"Whoops, some parameters is missing!\"\r\n    },\r\n    {\r\n        \"receiver\": \"628231xxxxx\",\r\n    },\r\n    {\r\n        \"receiver\": \"6281234567890\",\r\n        \"message\": \"Looks like your phone number is not exists.\"\r\n    }\r\n]",
+									"raw": "[\r\n    {\r\n        \"message\": {\r\n            \"text\": \"Whoops, some parameters is missing!\"\r\n        }\r\n    },\r\n    {\r\n        \"receiver\": \"628231xxxxx\"\r\n    },\r\n    {\r\n        \"receiver\": \"6281234567890\",\r\n        \"message\": {\r\n            \"text\": \"Looks like your phone number is not exists.\"\r\n        }\r\n    }\r\n]",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1189,12 +1269,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/chat/send-bulk?id=john",
+									"raw": "{{base_url}}/chats/send-bulk?id=john",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"chat",
+										"chats",
 										"send-bulk"
 									],
 									"query": [
@@ -1247,7 +1327,7 @@
 			]
 		},
 		{
-			"name": "Group",
+			"name": "Groups",
 			"item": [
 				{
 					"name": "Get Chat List",
@@ -1255,13 +1335,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/group/get?id=john",
+							"raw": "{{base_url}}/groups?id=john",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"group",
-								"get"
+								"groups"
 							],
 							"query": [
 								{
@@ -1280,13 +1359,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/group/get?id=john",
+									"raw": "{{base_url}}/groups?id=john",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"group",
-										"get"
+										"groups"
 									],
 									"query": [
 										{
@@ -1341,13 +1419,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/group/get/:jid?id=john&limit=25&cursor_id=REDACTED&cursor_fromMe=true",
+							"raw": "{{base_url}}/groups/:jid?id=john&limit=25&cursor_id=REDACTED&cursor_fromMe=true",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"group",
-								"get",
+								"groups",
 								":jid"
 							],
 							"query": [
@@ -1389,13 +1466,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/group/get/:jid?id=john&limit=25&cursor_id=REDACTED",
+									"raw": "{{base_url}}/groups/:jid?id=john&limit=25&cursor_id=REDACTED",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"group",
-										"get",
+										"groups",
 										":jid"
 									],
 									"query": [
@@ -1466,13 +1542,12 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/group/get/:jid?id=john&limit=25&cursor_id=REDACTED",
+									"raw": "{{base_url}}/groups/:jid?id=john&limit=25&cursor_id=REDACTED",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"group",
-										"get",
+										"groups",
 										":jid"
 									],
 									"query": [
@@ -1540,34 +1615,134 @@
 					]
 				},
 				{
-					"name": "Send  Text Message",
+					"name": "Get Group Metadata",
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "receiver",
-									"value": "628950xxxxx-16310xxxxx",
-									"description": "The group jid. Example: 628950xxxxxx-16310xxxxx.",
-									"type": "default"
-								},
-								{
-									"key": "message",
-									"value": "Hi guys, how are you?",
-									"description": "Your message.",
-									"type": "default"
-								}
-							]
-						},
 						"url": {
-							"raw": "{{base_url}}/group/send?id=john",
+							"raw": "{{base_url}}/groups/meta/:jid?id=john",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"group",
+								"groups",
+								"meta",
+								":jid"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "john",
+									"description": "Your created session id."
+								}
+							],
+							"variable": [
+								{
+									"key": "jid",
+									"value": "628950xxxxx-16310xxxxx@g.us",
+									"description": "Group jid."
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/groups/meta/:jid?id=john",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"groups",
+										"meta",
+										":jid"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "john",
+											"description": "Your created session id."
+										}
+									],
+									"variable": [
+										{
+											"key": "jid",
+											"value": "628950xxxxx-16310xxxxx@g.us",
+											"description": "Group jid."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "422"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a6-ydEaw0RfAhuvtlzdPdFtbsTmC4U\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 May 2022 04:25:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"\",\n    \"data\": {\n        \"id\": \"628950xxxxx-16310xxxxx@g.us\",\n        \"subject\": \"Raven\",\n        \"creation\": 1631090896,\n        \"owner\": \"628950xxxxx@s.whatsapp.net\",\n        \"restrict\": false,\n        \"announce\": false,\n        \"participants\": [\n            {\n                \"id\": \"6281320xxxxx@s.whatsapp.net\",\n                \"admin\": null\n            },\n            {\n                \"id\": \"628950xxxxxx@s.whatsapp.net\",\n                \"admin\": \"superadmin\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Send Message",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"receiver\": \"628950xxxxx-1631xxxxx\", \r\n    \"message\": {\r\n        \"text\": \"hello guys!\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/groups/send?id=john",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"groups",
 								"send"
 							],
 							"query": [
@@ -1578,7 +1753,7 @@
 								}
 							]
 						},
-						"description": "Send text message to a group."
+						"description": "Send message to a group."
 					},
 					"response": [
 						{
@@ -1587,29 +1762,21 @@
 								"method": "POST",
 								"header": [],
 								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "receiver",
-											"value": "628950xxxxx-16310xxxxx",
-											"description": "The group jid. Example: 628950xxxxxx-16310xxxxx.",
-											"type": "default"
-										},
-										{
-											"key": "message",
-											"value": "Hi guys, how are you?",
-											"description": "Your message.",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\r\n    \"receiver\": \"628950xxxxx-1631xxxxx\", \r\n    \"message\": {\r\n        \"text\": \"hello guys!\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
-									"raw": "{{base_url}}/group/send?id=john",
+									"raw": "{{base_url}}/groups/send?id=john",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"group",
+										"groups",
 										"send"
 									],
 									"query": [
@@ -1643,7 +1810,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 14 Feb 2022 14:13:52 GMT"
+									"value": "Fri, 27 May 2022 15:04:39 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1661,31 +1828,30 @@
 							"name": "Response Failed",
 							"originalRequest": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "receiver",
-											"value": "628950xxxxx-16310xxxxx",
-											"description": "The group jid. Example: 628950xxxxxx-16310xxxxx.",
-											"type": "default"
-										},
-										{
-											"key": "message",
-											"value": "Hi guys, how are you?",
-											"description": "Your message.",
-											"type": "default"
+									"mode": "raw",
+									"raw": "{\r\n    \"receiver\": \"628950xxxxx-1631xxxxx\", \r\n    \"message\": {\r\n        \"text\": \"hello guys!\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
-									"raw": "{{base_url}}/group/send?id=john",
+									"raw": "{{base_url}}/groups/send?id=john",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"group",
+										"groups",
 										"send"
 									],
 									"query": [

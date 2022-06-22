@@ -17,7 +17,7 @@ const send = async (req, res) => {
             return response(res, 400, false, 'The receiver number is not exists.')
         }
 
-        await sendMessage(session, receiver, { text: message })
+        await sendMessage(session, receiver, message, 0)
 
         response(res, 200, true, 'The message has been successfully sent.')
     } catch {
@@ -30,16 +30,22 @@ const sendBulk = async (req, res) => {
     const errors = []
 
     for (const [key, data] of req.body.entries()) {
-        if (!data.receiver || !data.message) {
+        let { receiver, message, delay } = data
+
+        if (!receiver || !message) {
             errors.push(key)
 
             continue
         }
 
-        data.receiver = formatPhone(data.receiver)
+        if (!delay || isNaN(delay)) {
+            delay = 1000
+        }
+
+        receiver = formatPhone(receiver)
 
         try {
-            const exists = await isExists(session, data.receiver)
+            const exists = await isExists(session, receiver)
 
             if (!exists) {
                 errors.push(key)
@@ -47,7 +53,7 @@ const sendBulk = async (req, res) => {
                 continue
             }
 
-            await sendMessage(session, data.receiver, { text: data.message })
+            await sendMessage(session, receiver, message, delay)
         } catch {
             errors.push(key)
         }

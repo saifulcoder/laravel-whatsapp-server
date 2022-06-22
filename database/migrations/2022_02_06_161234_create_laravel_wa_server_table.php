@@ -278,6 +278,8 @@ class CreateLaravelWaServerTable extends Migration
             $table->string('status', 5)->nullable();
             $table->dateTime('created_at')->nullable();
             $table->integer('id_device')->nullable();
+            $table->string('type', 15)->nullable();
+            $table->string('url_file', 255)->nullable();
         });
 
         Schema::create('password_resets', function (Blueprint $table) {

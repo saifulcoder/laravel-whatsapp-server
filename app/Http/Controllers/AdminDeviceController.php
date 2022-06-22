@@ -76,7 +76,7 @@
 			if(!CRUDBooster::isCreate() && $this->global_privilege==FALSE || $this->button_add==FALSE) {    
 				CRUDBooster::redirect(CRUDBooster::adminPath(),trans("crudbooster.denied_access"));
 			  }
-			$find = Http::get(env('URL_WA_SERVER').'/session/find/'.$name);
+			$find = Http::get(env('URL_WA_SERVER').'/sessions/find/'.$name);
 			$cek = json_decode($find->getBody());
 			// dd($cek)
 			if($cek->message == "Session found."){
@@ -93,7 +93,7 @@
 				}else{
 					$islegacy = "true"; 
 				}
-				$response = Http::post(env('URL_WA_SERVER').'/session/add', ['id' => $name, 'isLegacy' => $islegacy]);
+				$response = Http::post(env('URL_WA_SERVER').'/sessions/add', ['id' => $name, 'isLegacy' => $islegacy]);
 				$res = json_decode($response->getBody());
 				$image = $res->data->qr;
 			}
@@ -111,11 +111,11 @@
 			if(!CRUDBooster::isCreate() && $this->global_privilege==FALSE || $this->button_add==FALSE) {    
 				CRUDBooster::redirect(CRUDBooster::adminPath(),trans("crudbooster.denied_access"));
 			  }
-			// $res = Http::delete(env('URL_WA_SERVER').'/session/delete/'.$name);
+			// $res = Http::delete(env('URL_WA_SERVER').'/sessions/delete/'.$name);
 			$curl = curl_init();
 
 			curl_setopt_array($curl, array(
-			CURLOPT_URL => env('URL_WA_SERVER').'/session/delete/'.$name,
+			CURLOPT_URL => env('URL_WA_SERVER').'/sessions/delete/'.$name,
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_ENCODING => '',
 			CURLOPT_MAXREDIRS => 10,
@@ -138,13 +138,17 @@
 	            $getdata = DB::table('device')->select('name')->get();
 				// dd($getdata);
 				foreach ($getdata as $cek){
-					$find = Http::get(env('URL_WA_SERVER').'/session/find/'.$cek->name);
+					// dd($cek->name);
+					//  dd(env('URL_WA_SERVER').'/sessions/find/'.$cek->name);
+					$find = Http::get(env('URL_WA_SERVER').'/sessions/find/'.$cek->name);
+					// dd($find);
 					$getres = json_decode($find->getBody());
 					// dd($getres->success);
 						if($getres->message == "Session found."){
 							$status= "connected";
 						}
-						else if($getres->message == "Session not found.")
+						// else if($getres->message == "Session not found.")
+						else
 						{
 							$status= "disconnected";
 						}
@@ -169,7 +173,7 @@
 	    }
 	    public function hook_before_delete($id) {
 			$d = DB::table('device')->select('name')->where('id',$id)->first();
-			Http::delete(env('URL_WA_SERVER').'/session/delete/'.$d->name);
+			Http::delete(env('URL_WA_SERVER').'/sessions/delete/'.$d->name);
 
 	    }
 	    public function hook_after_delete($id) {

@@ -20,20 +20,16 @@
     "node": ">=14.5.0"
   },
   "dependencies": {
-    "@adiwajshing/baileys": "github:adiwajshing/baileys",
+    "@adiwajshing/baileys": "^4.2.0",
     "@adiwajshing/keyed-db": "^0.2.4",
-    "axios": "^0.26.0",
-    "decache": "^4.6.1",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "express-validator": "^6.14.0",
-    "form-data": "^4.0.0",
-    "FormData": "^0.10.1",
-    "fs": "^0.0.1-security",
     "node-cleanup": "^2.1.2",
-    "nodemon": "^2.0.15",
+    "pino": "^7.10.0",
     "qrcode": "^1.5.0",
-    "qrcode-terminal": "^0.12.0"
+    "qrcode-terminal": "^0.12.0",
+    "cors": "^2.8.5"
   },
   "devDependencies": {
     "eslint": "^8.5.0",
