@@ -38,25 +38,18 @@
 			$this->col[] = ["label"=>"Type","name"=>"type"];
 			$this->col[] = ["label"=>"Url File","name"=>"url_file"];
 			$this->col[] = ["label"=>"Time","name"=>"created_at"];
-			$this->col[] = ["label"=>"Status","name"=>"status","callback_php"=>'($row->status==1)?"<span class=\"badge bg-green\">Sent</span>":"<span class=\"badge bg-red\">Failed</span>"'];
+			$this->col[] = ["label"=>"Status","name"=>"status"];
+			// $this->col[] = ["label"=>"Status","name"=>"status","callback_php"=>'($row->status==1)?"<span class=\"badge bg-green\">Sent</span>":"<span class=\"badge bg-red\">Failed</span>"'];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
 			$this->form[] = ['label'=>'Number','name'=>'number','type'=>'text','validation'=>'required|numeric|min:1','width'=>'col-sm-10','help'=>'The receiver phone number in format: [Country Code Without + Sign][Phone Number]. Example: 628231xxxxxx.'];
 			$this->form[] = ['label'=>'Text','name'=>'text','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Device','name'=>'id_device','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'device,name','help'=>'Will show conneted device','datatable_where'=>'status="connected"'];
+			$this->form[] = ['label'=>'Device','name'=>'id_device','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'device,name','help'=>'Will show conneted device','datatable_where'=>'status="AUTHENTICATED"'];
 			$this->form[] = ['label'=>'Message Type','name'=>'type','type'=>'select','validation'=>'required','width'=>'col-sm-10','dataenum'=>'Text;Image;Video;PDF','default'=>'Text'];
 			$this->form[] = ['label'=>'File','name'=>'url_file','type'=>'upload','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
-
-			# OLD START FORM
-			//$this->form = [];
-			//$this->form[] = ['label'=>'Number','name'=>'number','type'=>'text','validation'=>'required|numeric|min:1','width'=>'col-sm-10','help'=>'The receiver phone number in format: [Country Code Without + Sign][Phone Number]. Example: 628231xxxxxx.'];
-			//$this->form[] = ['label'=>'Text','name'=>'text','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Device','name'=>'id_device','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'device,name','help'=>'Will show conneted device','datatable_where'=>'status="connected"'];
-			//$this->form[] = ['label'=>'Image','name'=>'urlimage','type'=>'upload','width'=>'col-sm-10'];
-			# OLD END FORM
 
 			$this->sub_module = array();
 	        $this->addaction = array();
@@ -120,13 +113,17 @@
 			}
 
 			//send api
-			$response = Http::post(env('URL_WA_SERVER').'/chats/send?id='.$device->name, [
-				'receiver' => $format_number,
+			$response = Http::post(env('URL_WA_SERVER').'/'.$device->name.'/messages/send', [
+				// 'receiver' => $format_number,
+				// 'message' => $body
+				'jid' => $format_number.'@s.whatsapp.net',
+				'type' => 'number',
 				'message' => $body
 				]);
 			// dd($response);
 			$res = json_decode($response->getBody());
-			$postdata['status'] = $res->success;
+			// dd($res);
+			$postdata['status'] = $res->status;
 	    }
 	    public function hook_after_add($id) {        
 
