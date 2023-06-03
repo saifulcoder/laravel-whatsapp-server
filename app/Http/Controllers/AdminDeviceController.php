@@ -37,7 +37,7 @@
 			$this->col[] = ["label"=>"Number","name"=>"number"];
 			$this->col[] = ["label"=>"Name","name"=>"name"];
 			$this->col[] = ["label"=>"Description","name"=>"description"];
-			$this->col[] = ["label"=>"Status","name"=>"status",'callback_php'=>'($row->status=="connected")?"<span class=\"badge bg-green\">Connected</span>":"<span class=\"badge bg-red\">Disconnected</span>"'];
+			$this->col[] = ["label"=>"Status","name"=>"status",'callback_php'=>'($row->status=="AUTHENTICATED")?"<span class=\"badge bg-green\">AUTHENTICATED</span>":"<span class=\"badge bg-red\">Disconnected</span>"'];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 			
 			# START FORM DO NOT REMOVE THIS LINE
@@ -45,18 +45,12 @@
 			$this->form[] = ['label'=>'Number','name'=>'number','type'=>'number','validation'=>'required|min:1','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Name','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'text','validation'=>'max:255','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-			$this->form[] = ['label'=>'Multi Device','name'=>'multidevice','type'=>'select2','validation'=>'required','width'=>'col-sm-10','dataenum'=>'YES;NO'];
 			# END FORM DO NOT REMOVE THIS LINE
 
-			# OLD START FORM
-			//$this->form[] = ["label"=>"Users","name"=>"id_users","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"users,name"];
-			//$this->form[] = ["label"=>"Name","name"=>"name","type"=>"text","required"=>TRUE,"validation"=>"required|string|min:3|max:70","placeholder"=>"You can only enter the letter only"];
-			//$this->form[] = ["label"=>"Status","name"=>"status","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
-			# OLD END FORM
 	        $this->sub_module = array();
 	        $this->addaction = array();
-			$this->addaction[] = ['label' => 'Scan', 'icon' => 'fa fa-qrcode', 'color' => 'success', 'url' => CRUDBooster::mainpath('scan/[name]'),'showIf'=>'[status] <> "connected"'];
-	        $this->addaction[] = ['label' => 'Disconnect', 'icon' => 'fa fa-times', 'color' => 'danger', 'url' => CRUDBooster::mainpath('disconnect/[name]'), 'confirmation' => true,'showIf'=>'[status] == "connected"'];
+			$this->addaction[] = ['label' => 'Scan', 'icon' => 'fa fa-qrcode', 'color' => 'success', 'url' => CRUDBooster::mainpath('scan/[id]'),'showIf'=>'[status] <> "AUTHENTICATED"'];
+	        $this->addaction[] = ['label' => 'Disconnect', 'icon' => 'fa fa-times', 'color' => 'danger', 'url' => CRUDBooster::mainpath('disconnect/[id]'), 'confirmation' => true,'showIf'=>'[status] == "AUTHENTICATED"'];
 			$this->button_selected = array();
 	        $this->alert        = array();
 	        $this->index_button = array();
@@ -71,32 +65,51 @@
 	        
 	        
 	    }
-		public function Scan($name)
+		public function Scan($id)
 		{
 			if(!CRUDBooster::isCreate() && $this->global_privilege==FALSE || $this->button_add==FALSE) {    
 				CRUDBooster::redirect(CRUDBooster::adminPath(),trans("crudbooster.denied_access"));
 			  }
-			$find = Http::get(env('URL_WA_SERVER').'/session/find/'.$name);
+			// ambil sessionid
+			$device = DB::table('device')->select('name')->where('id', $id)->first();
+			// cek device ready?
+			$find = Http::get(env('URL_WA_SERVER').'/sessions/'.$device->name.'/status');
 			$cek = json_decode($find->getBody());
-			// dd($cek)
-			if($cek->message == "Session found."){
+			// dd($cek);
+			if($cek->status == "AUTHENTICATED"){
 				$image = asset('image/connect.gif');
-				DB::table('device')->where('name', $name)->update(['status' => 'connected','updated_at' => now()]);
+				DB::table('device')->where('id', $id)->update(['status' => $cek->status ,'updated_at' => now()]);
+				return redirect()->back()->with('success', 'AUTHENTICATED');   
 				
 			}
 			else{
-				DB::table('device')->where('name', $name)->update(['status' => 'disconnected','updated_at' => now()]);
+				DB::table('device')->where('id', $id)->update(['status' => $cek->status,'updated_at' => now()]);
 
-				$cekMD = DB::table('device')->select('multidevice')->where('name',$name)->first();
-				if($cekMD->multidevice == "YES"){
-					$islegacy = "false"; 
-				}else{
-					$islegacy = "true"; 
-				}
-				$response = Http::post(env('URL_WA_SERVER').'/session/add', ['id' => $name, 'isLegacy' => $islegacy]);
+				
+				// add session
+				$response = Http::post(env('URL_WA_SERVER').'/sessions/add', ['sessionId' => $device->name]);
 				$res = json_decode($response->getBody());
-				$image = $res->data->qr;
+
+				// dd($res);
+				if($res->error == "Session already exists"){
+					//delete session if already exist
+					$hapus = Http::delete(env('URL_WA_SERVER').'/sessions/'.$device->name);
+					$res = json_decode($hapus->getBody());
+					
+					$newsessionID = $device->name . rand(10,100);
+					sleep(1);
+					// request qr ulang 
+					$response = Http::post(env('URL_WA_SERVER').'/sessions/add', ['sessionId' => $newsessionID]);
+					$res = json_decode($response->getBody());
+
+					// update db device name
+					DB::table('device')->where('id', $id)->update(['name' => $newsessionID]);
+					// dd($res);
+				}
+				$image = $res->qr;
+
 			}
+			// dd($image);
 
 			$data = [];
 			$data['page_title'] = 'Scan Device';
@@ -106,28 +119,14 @@
 			//Please use view method instead view method from laravel
 			return $this->view('device.scan',$data);
 		}
-		public function disconnect($name)
+		public function disconnect($id)
 		{
 			if(!CRUDBooster::isCreate() && $this->global_privilege==FALSE || $this->button_add==FALSE) {    
 				CRUDBooster::redirect(CRUDBooster::adminPath(),trans("crudbooster.denied_access"));
 			  }
-			// $res = Http::delete(env('URL_WA_SERVER').'/session/delete/'.$name);
-			$curl = curl_init();
+			  $device = DB::table('device')->select('name')->where('id', $id)->first();
 
-			curl_setopt_array($curl, array(
-			CURLOPT_URL => env('URL_WA_SERVER').'/session/delete/'.$name,
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_ENCODING => '',
-			CURLOPT_MAXREDIRS => 10,
-			CURLOPT_TIMEOUT => 0,
-			CURLOPT_FOLLOWLOCATION => true,
-			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-			CURLOPT_CUSTOMREQUEST => 'DELETE',
-			));
-
-			$response = curl_exec($curl);
-
-			curl_close($curl);
+			$response = Http::delete(env('URL_WA_SERVER').'/sessions/'.$device->name);
 			return CRUDBooster::redirect(CRUDBooster::mainPath(),$response ,"success");
 
 		}
@@ -138,16 +137,14 @@
 	            $getdata = DB::table('device')->select('name')->get();
 				// dd($getdata);
 				foreach ($getdata as $cek){
-					$find = Http::get(env('URL_WA_SERVER').'/session/find/'.$cek->name);
+					// dd($cek->name);
+					//  dd(env('URL_WA_SERVER').'/sessions/find/'.$cek->name);
+					$find = Http::get(env('URL_WA_SERVER').'/sessions/'.$cek->name.'/status');
+					// dd($find->getBody());
 					$getres = json_decode($find->getBody());
-					// dd($getres->success);
-						if($getres->message == "Session found."){
-							$status= "connected";
-						}
-						else if($getres->message == "Session not found.")
-						{
-							$status= "disconnected";
-						}
+					// dd($getres->status);
+						$status = $getres->status;
+						// dd($status);
 						DB::table('device')->where('name', $cek->name)->update(['status' => $status,'updated_at' => now()]);
 				}
 	    }
@@ -169,7 +166,8 @@
 	    }
 	    public function hook_before_delete($id) {
 			$d = DB::table('device')->select('name')->where('id',$id)->first();
-			Http::delete(env('URL_WA_SERVER').'/session/delete/'.$d->name);
+			Http::delete(env('URL_WA_SERVER').'/sessions/delete/'.$d->name);
+
 
 	    }
 	    public function hook_after_delete($id) {

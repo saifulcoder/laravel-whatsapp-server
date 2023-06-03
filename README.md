@@ -7,6 +7,10 @@ An implementation of [@adiwajshing/Baileys](https://github.com/adiwajshing/Baile
 2. Admin Panel : Crudbooster
 3. Backend Server : [@ookamiiixd/baileys-api](https://github.com/ookamiiixd/baileys-api)
 
+## Requirement
+1. php 7.4
+2. MySQL / MariaDB
+3. NodeJs 14 or higher
 
 ## Frontend Installation
 
@@ -26,10 +30,12 @@ DB_PASSWORD=**password**
 ```bash
 URL_WA_SERVER=http://localhost:8000
 ```
-6. Run the following command at the terminal:
+6. Run Migration Database the following command at the terminal:
 ```bash
  php artisan migrate:fresh --seed
 ```
+or you can import db.sql
+
 7. Run laravel
 ```bash
 php artisan serve --port=80
@@ -46,22 +52,58 @@ default password : 123456
 
 Simple RESTful WhatsApp API by [@ookamiiixd/baileys-api](https://github.com/ookamiiixd/baileys-api) .
 
-1. Enter to the backend project directory `cd backend`.
+1. Enter to the baileys-api-master project directory `cd baileys-api-master`.
 2. Execute `npm i` to install the dependencies.
 3. You can start the app by executing `npm run start` or `node .`.
 4. Now the endpoint should be available according to your environment variable settings. Default is at `http://localhost:8000`.
 
-### Backend API DOCs
+### Backend API DOCs 
 
-The API documentation is available online at [here](https://documenter.getpostman.com/view/18988925/UVRHiNne). You can also import the **Postman Collection File** `(postman_collection.json)` into your Postman App alternatively.
+The API baileys-api-master documentation is available online at [here](https://documenter.getpostman.com/view/18988925/UVeNni36). You can also import the **Postman Collection File** `(postman_collection.json)` into your Postman App alternatively.
 
 The server will respond in JSON format:
 
 ```javascript
+// Send text message
 {
-    success: true|false, // bool
-    message: "", // string
-    data: {} // object
+    receiver: '628231xxxxx',
+    message: {
+        text: 'Hello there!'
+    }
+}
+
+// Send image
+{
+    receiver: '628231xxxxx',
+    message: {
+        image: {
+            url: 'https://example.com/logo.png'
+        },
+        caption: 'My logo'
+    }
+}
+
+// Send video
+{
+    receiver: '628231xxxxx',
+    message: {
+        video: {
+            url: 'https://example.com/intro.mp4'
+        },
+        caption: 'My intro'
+    }
+}
+
+// Send document
+{
+    receiver: '628231xxxxx',
+    message: {
+        document: {
+            url: 'https://example.com/presentation.pdf'
+        },
+        mimetype: 'application/pdf',
+        fileName: 'presentation-1.pdf'
+    }
 }
 ```
 
@@ -75,10 +117,10 @@ The server will respond in JSON format:
 | Multiple Users                                                | ✔ |
 | User Privilege                                              | ✔ |
 | API RESTFul                                              | ✔ |
-| 📁 Send **image, video, audio and docs**                      | coming soon |
+| 📁 Send **image, video, audio and docs**                      | ✔ |
+| Send stickers                                                 | ✔ |
+| Send stickers GIF                                             | ✔ |
 | Send Buttons                                                  | coming soon |
-| Send stickers                                                 | coming soon |
-| Send stickers GIF                                             | coming soon |
 | Send Bulk Message                                             | coming soon |
 | Send Message with schedule                                    | coming soon |
 | Receive message                                               | coming soon |

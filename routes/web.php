@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 Route::get('/admin/device/scan/{name}', 'App\Http\Controllers\AdminDeviceController@scan');
 Route::get('/admin/device/disconnect/{name}', 'App\Http\Controllers\AdminDeviceController@disconnect');
+Route::post('/webhook', 'App\Http\Controllers\WebhookController@handleWebhook');
