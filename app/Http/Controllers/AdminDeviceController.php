@@ -166,8 +166,7 @@
 	    }
 	    public function hook_before_delete($id) {
 			$d = DB::table('device')->select('name')->where('id',$id)->first();
-			Http::delete(env('URL_WA_SERVER').'/sessions/delete/'.$d->name);
-
+			Http::delete(env('URL_WA_SERVER').'/session/delete/'.$d->name);
 
 	    }
 	    public function hook_after_delete($id) {

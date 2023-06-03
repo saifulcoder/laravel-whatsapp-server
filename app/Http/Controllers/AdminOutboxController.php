@@ -46,9 +46,7 @@
 			$this->form = [];
 			$this->form[] = ['label'=>'Number','name'=>'number','type'=>'text','validation'=>'required|numeric|min:1','width'=>'col-sm-10','help'=>'The receiver phone number in format: [Country Code Without + Sign][Phone Number]. Example: 628231xxxxxx.'];
 			$this->form[] = ['label'=>'Text','name'=>'text','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Device','name'=>'id_device','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'device,name','help'=>'Will show conneted device','datatable_where'=>'status="AUTHENTICATED"'];
-			$this->form[] = ['label'=>'Message Type','name'=>'type','type'=>'select','validation'=>'required','width'=>'col-sm-10','dataenum'=>'Text;Image;Video;PDF'];
-			$this->form[] = ['label'=>'File','name'=>'url_file','type'=>'upload','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Device','name'=>'id_device','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'device,name','help'=>'Will show conneted device','datatable_where'=>'status="connected"'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			$this->sub_module = array();
