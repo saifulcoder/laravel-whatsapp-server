@@ -1,0 +1,23 @@
+{
+    "env": {
+        "node": true
+    },
+    "extends": ["xo", "prettier"],
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "rules": {
+        "prettier/prettier": "error",
+        "one-var": "off",
+        "max-params": ["error", 5],
+        "arrow-body-style": ["error", "always"],
+        "radix": "off",
+        "no-unused-expressions": ["error", { "allowTernary": true }],
+        "curly": "error",
+        "new-cap": "off",
+        "no-return-assign": "off",
+        "no-await-in-loop": "off"
+    },
+    "plugins": ["prettier"]
+}

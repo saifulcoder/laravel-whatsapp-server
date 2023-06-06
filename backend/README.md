@@ -12,25 +12,16 @@ An implementation of [@adiwajshing/Baileys](https://github.com/adiwajshing/Baile
 
 ```env
 # Listening Host
-HOST="localhost"
+HOST=127.0.0.1
 
 # Listening Port
-PORT="3000"
-
-# Database Connection URL
-DATABASE_URL="mysql://root:12345@localhost:3306/baileys_api"
-
-# Reconnect Interval (in Milliseconds)
-RECONNECT_INTERVAL="5000"
+PORT=8000
 
 # Maximum Reconnect Attempts
-MAX_RECONNECT_RETRIES="5"
+MAX_RETRIES=5
 
-# Maximum SSE QR Generation Attempts
-SSE_MAX_QR_GENERATION="10"
-
-# Pino Logger Level
-LOG_LEVEL="warn"
+# Reconnect Interval (in Milliseconds)
+RECONNECT_INTERVAL=5000
 ```
 
 ## Usage
@@ -40,7 +31,20 @@ LOG_LEVEL="warn"
 
 ## API Docs
 
-The API documentation is available online [here](https://documenter.getpostman.com/view/18988925/2s8Z73zWbg). You can also import the **Postman Collection File** `(postman_collection.json)` into your Postman App alternatively
+The API documentation is available online [here](https://documenter.getpostman.com/view/18988925/UVeNni36). You can also import the **Postman Collection File** `(postman_collection.json)` into your Postman App alternatively.
+
+The server will respond in following JSON format:
+
+```javascript
+{
+    success: true|false, // bool
+    message: "", // string
+    data: {}|[] // object or array of object
+}
+```
+
+## Known Issue
+- Logging out from your phone manually when the session is still active **will kill the entire app** after a few minutes. As for now you should only destroy a session by using the **delete session endpoint** to avoid this issue. This issue only occurs for **Beta Multi-Device** users.
 
 ## Notes
 - The app only provide a very simple validation, you may want to implement your own.
@@ -50,4 +54,4 @@ The API documentation is available online [here](https://documenter.getpostman.c
 
 ## Notice
 
-This project is intended for learning purpose only, don't use it for spamming or any activities that's prohibited by **WhatsApp**
+This project is intended for learning purpose only, don't use it for spamming or any activities that's prohibited by **WhatsApp**.

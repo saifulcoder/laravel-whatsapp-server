@@ -1,3 +1,2 @@
-node_modules/
-dist/
-debug/
+package.json
+package-lock.json
