@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SSE Example</title>
+  </head>
+  <body>
+    <img src="" alt="qr" id="qr" width="300" height="300" />
+    <div>Connection state:</div>
+    <div id="data"></div>
+    <script type="text/javascript">
+      const eventSource = new EventSource('http://localhost:3000/sessions/john/add-sse');
+      eventSource.onerror = eventSource.close;
+      eventSource.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        console.log(data);
+        document.querySelector('#qr').src = data.qr || '';
+        document.querySelector('#data').innerHTML = event.data;
+      };
+    </script>
+  </body>
+</html>

@@ -35,7 +35,7 @@
 			$this->col = [];
 			$this->col[] = ["label"=>"Users","name"=>"id_users","join"=>"cms_users,name"];
 			$this->col[] = ["label"=>"Number","name"=>"number"];
-			$this->col[] = ["label"=>"Name","name"=>"name"];
+			$this->col[] = ["label"=>"SessionId","name"=>"name"];
 			$this->col[] = ["label"=>"Description","name"=>"description"];
 			$this->col[] = ["label"=>"Status","name"=>"status",'callback_php'=>'($row->status=="AUTHENTICATED")?"<span class=\"badge bg-green\">AUTHENTICATED</span>":"<span class=\"badge bg-red\">Disconnected</span>"'];
 			# END COLUMNS DO NOT REMOVE THIS LINE
@@ -74,18 +74,20 @@
 			$device = DB::table('device')->select('name')->where('id', $id)->first();
 			// cek device ready?
 			$find = Http::get(env('URL_WA_SERVER').'/sessions/'.$device->name.'/status');
+			// $find = Http::get(env('URL_WA_SERVER').'/sessions/find/'.$device->name);
+			//   echo env('URL_WA_SERVER').'/sessions/find/'.$device->name;
 			$cek = json_decode($find->getBody());
 			// dd($cek);
 			if($cek->status == "AUTHENTICATED"){
 				$image = asset('image/connect.gif');
 				DB::table('device')->where('id', $id)->update(['status' => $cek->status ,'updated_at' => now()]);
-				return redirect()->back()->with('success', 'AUTHENTICATED');   
+				// return redirect()->back()->with('success', 'Session found.');   
+				$reloadpage = "";
 				
 			}
 			else{
 				DB::table('device')->where('id', $id)->update(['status' => $cek->status,'updated_at' => now()]);
 
-				
 				// add session
 				$response = Http::post(env('URL_WA_SERVER').'/sessions/add', ['sessionId' => $device->name]);
 				$res = json_decode($response->getBody());
@@ -107,6 +109,7 @@
 					// dd($res);
 				}
 				$image = $res->qr;
+				$reloadpage = 'setTimeout(function(){window.location.reload(1);}, 20000);';
 
 			}
 			// dd($image);
@@ -114,7 +117,7 @@
 			$data = [];
 			$data['page_title'] = 'Scan Device';
 			$data['result'] = $image;
-			$data['script_js'] = 'setTimeout(function(){window.location.reload(1);}, 20000);';
+			$data['script_js'] = $reloadpage;
 			
 			//Please use view method instead view method from laravel
 			return $this->view('device.scan',$data);
@@ -127,7 +130,9 @@
 			  $device = DB::table('device')->select('name')->where('id', $id)->first();
 
 			$response = Http::delete(env('URL_WA_SERVER').'/sessions/'.$device->name);
-			return CRUDBooster::redirect(CRUDBooster::mainPath(),$response ,"success");
+			$res = json_decode($response->getBody());
+
+			return CRUDBooster::redirect(CRUDBooster::mainPath(),$res->message ,"success");
 
 		}
 	    public function actionButtonSelected($id_selected,$button_name) {
@@ -137,13 +142,16 @@
 	            $getdata = DB::table('device')->select('name')->get();
 				// dd($getdata);
 				foreach ($getdata as $cek){
-					// dd($cek->name);
-					//  dd(env('URL_WA_SERVER').'/sessions/find/'.$cek->name);
 					$find = Http::get(env('URL_WA_SERVER').'/sessions/'.$cek->name.'/status');
-					// dd($find->getBody());
 					$getres = json_decode($find->getBody());
-					// dd($getres->status);
+					// dd($getres);
+					// dd($getres->error);
+					if($getres->error == "Session not found"){
+						$status = "Disconnected";
+					}
+					else{
 						$status = $getres->status;
+					}
 						// dd($status);
 						DB::table('device')->where('name', $cek->name)->update(['status' => $status,'updated_at' => now()]);
 				}
@@ -166,7 +174,7 @@
 	    }
 	    public function hook_before_delete($id) {
 			$d = DB::table('device')->select('name')->where('id',$id)->first();
-			Http::delete(env('URL_WA_SERVER').'/session/delete/'.$d->name);
+			Http::delete(env('URL_WA_SERVER').'/sessions/'.$d->name);
 
 	    }
 	    public function hook_after_delete($id) {

@@ -39,15 +39,25 @@
 			$this->col[] = ["label"=>"Url File","name"=>"url_file"];
 			$this->col[] = ["label"=>"Time","name"=>"created_at"];
 			$this->col[] = ["label"=>"Status","name"=>"status"];
-			// $this->col[] = ["label"=>"Status","name"=>"status","callback_php"=>'($row->status==1)?"<span class=\"badge bg-green\">Sent</span>":"<span class=\"badge bg-red\">Failed</span>"'];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
+			$this->form[] = ['label'=>'Device','name'=>'id_device','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'device,name','help'=>'Will show conneted device','datatable_where'=>'status="AUTHENTICATED"'];
+			$this->form[] = ['label'=>'Type','name'=>'type','type'=>'select2','validation'=>'required','width'=>'col-sm-10','dataenum'=>'Text;Image;Video;PDF'];
 			$this->form[] = ['label'=>'Number','name'=>'number','type'=>'text','validation'=>'required|numeric|min:1','width'=>'col-sm-10','help'=>'The receiver phone number in format: [Country Code Without + Sign][Phone Number]. Example: 628231xxxxxx.'];
 			$this->form[] = ['label'=>'Text','name'=>'text','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Device','name'=>'id_device','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'device,name','help'=>'Will show conneted device','datatable_where'=>'status="connected"'];
+			$this->form[] = ['label'=>'Url File','name'=>'url_file','type'=>'upload','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
+
+			# OLD START FORM
+			//$this->form = [];
+			//$this->form[] = ['label'=>'Device','name'=>'id_device','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'device,name','help'=>'Will show conneted device','datatable_where'=>'status="AUTHENTICATED"'];
+			//$this->form[] = ['label'=>'Type','name'=>'type','type'=>'select2','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Number','name'=>'number','type'=>'text','validation'=>'required|numeric|min:1','width'=>'col-sm-10','help'=>'The receiver phone number in format: [Country Code Without + Sign][Phone Number]. Example: 628231xxxxxx.'];
+			//$this->form[] = ['label'=>'Text','name'=>'text','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Url File','name'=>'url_file','type'=>'upload','width'=>'col-sm-10'];
+			# OLD END FORM
 
 			$this->sub_module = array();
 	        $this->addaction = array();
@@ -75,10 +85,9 @@
 	    }
 	    public function hook_before_add(&$postdata) { 
 
-			$getnumber = substr($postdata['number'], 1);
-			$regional = env('REGIONAL');
-			if($getnumber == 0 || $getnumber == 8 ){
-				$format_number = $regional.substr($postdata['number'], 1);
+			$number = $postdata['number'];
+			if ($number[0] == "0" || $number[0] == "8") {
+				$format_number = env('REGIONAL').substr($postdata['number'], 1);
 			}else{
 				$format_number = $postdata['number'];
 			}
@@ -87,6 +96,7 @@
 			// echo "tipe pesan ".$postdata['type'];
 			// Text;Image;Video;PDF
 			// send text
+			// dd($postdata);
 			if($postdata['type'] == "Text"){
 				$body = ['text'=>$postdata['text']];
 			}
@@ -110,15 +120,18 @@
 				];
 			}
 
-			//send api
-			$response = Http::post(env('URL_WA_SERVER').'/'.$device->name.'/messages/send', [
-				// 'receiver' => $format_number,
-				// 'message' => $body
+			
+			$response = Http::withHeaders([
+				'Content-Type' => 'application/json'
+			  ])->post(env('URL_WA_SERVER').'/'.$device->name.'/messages/send', 
+				[
 				'jid' => $format_number.'@s.whatsapp.net',
 				'type' => 'number',
 				'message' => $body
-				]);
-			// dd($response);
+				]
+			);
+				
+			// dd($response->getBody());
 			$res = json_decode($response->getBody());
 			// dd($res);
 			$postdata['status'] = $res->status;
