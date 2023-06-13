@@ -1,3 +1,5 @@
+# Update Baileys API
+Tutorial installation [here](https://youtu.be/rTn-TBj5ifs)
 
 # Baileys Restful API with Laravel
 An implementation of [@adiwajshing/Baileys](https://github.com/adiwajshing/Baileys) as a simple RESTful API service with multiple device support.
@@ -28,13 +30,9 @@ DB_PASSWORD=**password**
 ```
 5. Setting the URL backend server configuration, open `.env` file at project root directory
 ```bash
-URL_WA_SERVER=http://localhost:8000
+URL_WA_SERVER=http://localhost:3000
 ```
-6. Run Migration Database the following command at the terminal:
-```bash
- php artisan migrate:fresh --seed
-```
-or you can import db.sql
+6. Import database db.sql
 
 7. Run laravel
 ```bash
@@ -52,60 +50,80 @@ default password : 123456
 
 Simple RESTful WhatsApp API by [@ookamiiixd/baileys-api](https://github.com/ookamiiixd/baileys-api) .
 
-1. Enter to the baileys-api-master project directory `cd baileys-api-master`.
+1. Enter to the backend project directory `cd backend`.
 2. Execute `npm i` to install the dependencies.
-3. You can start the app by executing `npm run start` or `node .`.
-4. Now the endpoint should be available according to your environment variable settings. Default is at `http://localhost:8000`.
+3. Build the project using the build script `npm run build`
 
-### Backend API DOCs 
+You can skip this part if you're using the prebuilt one from the release page
 
-The API baileys-api-master documentation is available online at [here](https://documenter.getpostman.com/view/18988925/UVeNni36). You can also import the **Postman Collection File** `(postman_collection.json)` into your Postman App alternatively.
+## Setup
 
-The server will respond in JSON format:
+1. Copy the `.env.example` file and rename it into `.env`, then update your [connection url](https://www.prisma.io/docs/reference/database-reference/connection-urls) in the `DATABASE_URL` field
+1. Update your [provider](https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#fields) in the `prisma/schema.prisma` file if you're using database other than MySQL
+1. Run your [migration](https://www.prisma.io/docs/reference/api-reference/command-reference#prisma-migrate)
 
-```javascript
-// Send text message
-{
-    receiver: '628231xxxxx',
-    message: {
-        text: 'Hello there!'
-    }
-}
-
-// Send image
-{
-    receiver: '628231xxxxx',
-    message: {
-        image: {
-            url: 'https://example.com/logo.png'
-        },
-        caption: 'My logo'
-    }
-}
-
-// Send video
-{
-    receiver: '628231xxxxx',
-    message: {
-        video: {
-            url: 'https://example.com/intro.mp4'
-        },
-        caption: 'My intro'
-    }
-}
-
-// Send document
-{
-    receiver: '628231xxxxx',
-    message: {
-        document: {
-            url: 'https://example.com/presentation.pdf'
-        },
-        mimetype: 'application/pdf',
-        fileName: 'presentation-1.pdf'
-    }
-}
+```sh
+npx prisma migrate (dev|deploy)
 ```
+
+or push the schema
+
+```sh
+npx prisma db push
+```
+
+Don't forget to always re-run those whenever there's a change on the `prisma/schema.prisma` file
+
+## `.env` Configurations
+
+```env
+# Listening Host
+HOST="localhost"
+
+# Listening Port
+PORT="3000"
+
+# Database Connection URL
+DATABASE_URL="mysql://root:12345@localhost:3306/baileys_api"
+
+# Reconnect Interval (in Milliseconds)
+RECONNECT_INTERVAL="5000"
+
+# Maximum Reconnect Attempts
+MAX_RECONNECT_RETRIES="5"
+
+# Maximum SSE QR Generation Attempts
+SSE_MAX_QR_GENERATION="10"
+
+# Pino Logger Level
+LOG_LEVEL="warn"
+```
+
+## Usage
+
+1. Make sure you have completed the **Installation** and **Setup** step
+1. You can then start the app using the `start` script
+
+```sh
+npm run start
+```
+
+1. Now the endpoint should be available according to your environment variables configuration. Default is at `http://localhost:3000`
+
+## API Docs
+
+The API documentation is available online [here](https://documenter.getpostman.com/view/18988925/2s8Z73zWbg). You can also import the **Postman Collection File** `(postman_collection.json)` into your Postman App alternatively
+
+## Notes
+
+- There's no authentication, you may want to implement your own. I don't want to force anyone into using a specific authentication method, choose whatever you love
+
+
+
+## Notice
+
+This project is intended for learning purpose only, don't use it for spamming or any activities that's prohibited by **WhatsApp**
+
 
 # Functions laravel-wa-server
 
