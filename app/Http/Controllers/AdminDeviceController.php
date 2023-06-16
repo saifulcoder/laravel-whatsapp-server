@@ -74,8 +74,6 @@
 			$device = DB::table('device')->select('name')->where('id', $id)->first();
 			// cek device ready?
 			$find = Http::get(env('URL_WA_SERVER').'/sessions/'.$device->name.'/status');
-			// $find = Http::get(env('URL_WA_SERVER').'/sessions/find/'.$device->name);
-			//   echo env('URL_WA_SERVER').'/sessions/find/'.$device->name;
 			$cek = json_decode($find->getBody());
 			// dd($cek);
 			if($cek->status == "AUTHENTICATED"){

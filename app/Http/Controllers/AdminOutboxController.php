@@ -44,19 +44,21 @@
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
 			$this->form[] = ['label'=>'Device','name'=>'id_device','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'device,name','help'=>'Will show conneted device','datatable_where'=>'status="AUTHENTICATED"'];
-			$this->form[] = ['label'=>'Type','name'=>'type','type'=>'select2','validation'=>'required','width'=>'col-sm-10','dataenum'=>'Text;Image;Video;PDF'];
+			$this->form[] = ['label'=>'Type','name'=>'type','type'=>'select2','validation'=>'required','width'=>'col-sm-10','dataenum'=>'Text;Button;Image;Video;PDF'];
 			$this->form[] = ['label'=>'Number','name'=>'number','type'=>'text','validation'=>'required|numeric|min:1','width'=>'col-sm-10','help'=>'The receiver phone number in format: [Country Code Without + Sign][Phone Number]. Example: 628231xxxxxx.'];
 			$this->form[] = ['label'=>'Text','name'=>'text','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Url File','name'=>'url_file','type'=>'upload','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Button','name'=>'buttonText','type'=>'custom','width'=>'col-sm-10','html'=>'<div id="inputContainer"></div>        <button id="add" type="button"  class="btn btn-primary"><i class="fa fa-plus-circle">ADD</i></button>'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
 			//$this->form[] = ['label'=>'Device','name'=>'id_device','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'device,name','help'=>'Will show conneted device','datatable_where'=>'status="AUTHENTICATED"'];
-			//$this->form[] = ['label'=>'Type','name'=>'type','type'=>'select2','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Type','name'=>'type','type'=>'select2','validation'=>'required','width'=>'col-sm-10','dataenum'=>'Text;Button;Image;Video;PDF'];
 			//$this->form[] = ['label'=>'Number','name'=>'number','type'=>'text','validation'=>'required|numeric|min:1','width'=>'col-sm-10','help'=>'The receiver phone number in format: [Country Code Without + Sign][Phone Number]. Example: 628231xxxxxx.'];
 			//$this->form[] = ['label'=>'Text','name'=>'text','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Url File','name'=>'url_file','type'=>'upload','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Button','name'=>'button','type'=>'custom','width'=>'col-sm-10','html'=>'<div id="inputContainer"></div>        <button id="add" type="button"  class="btn btn-primary"><i class="fa fa-plus-circle">ADD</i></button>'];
 			# OLD END FORM
 
 			$this->sub_module = array();
@@ -66,7 +68,38 @@
 	        $this->index_button = array();
 	        $this->table_row_color = array();     	          
 	        $this->index_statistic = array();
-	        $this->script_js = NULL;
+	        $this->script_js = "$(document).ready(function() {
+				$('#form-group-buttonText').hide();
+				$('#form-group-url_file').hide();
+
+				$('#type').change(function() {
+					var selectedValue = $(this).val();
+					if (selectedValue === 'Button') {
+						$('#form-group-buttonText').show();
+						$('#form-group-url_file').hide();
+					}
+					else if (selectedValue === 'Image' || selectedValue === 'Video' || selectedValue === 'PDF') {
+						$('#form-group-buttonText').hide();
+						$('#form-group-url_file').show();
+
+					}
+					else {
+						$('#form-group-buttonText').hide();
+						$('#form-group-url_file').hide();
+					}
+				});
+				var inputCount = 0;
+	
+				$('#add').click(function() {
+					inputCount++;
+					var inputHtml = '<div class=\"form-group header-group-0 \">';
+					inputHtml += '<label for=\"inputText' + inputCount + '\" class=\"control-label col-sm-2\">Input Text ' + inputCount + ':</label>';
+					inputHtml += '<div class=\"col-sm-5\"><input type=\"text\" class=\"form-control\" id=\"inputText' + inputCount + '\" name=\"buttonText[]\" class=\"form-control\">';
+					inputHtml += '</div></div>';
+	
+					$('#inputContainer').append(inputHtml);
+				});
+			});";
 	        $this->pre_index_html = null;
 	        $this->post_index_html = null;
 	        $this->load_js = array();
@@ -84,7 +117,7 @@
 	    public function hook_row_index($column_index,&$column_value) {	        
 	    }
 	    public function hook_before_add(&$postdata) { 
-
+			// dd($postdata);
 			$number = $postdata['number'];
 			if ($number[0] == "0" || $number[0] == "8") {
 				$format_number = env('REGIONAL').substr($postdata['number'], 1);
@@ -99,6 +132,25 @@
 			// dd($postdata);
 			if($postdata['type'] == "Text"){
 				$body = ['text'=>$postdata['text']];
+			}
+			else if($postdata['type'] == "Button"){
+				// send a buttons message!
+				$x = 1;
+				foreach ($postdata['buttonText'] as $q) {
+					$button['buttonId'] = "id".$x;
+					$button['buttonText'] = ['displayText' => $q];
+					$button['type'] = 1; 
+					$buttons[] = $button;
+					$x++;
+				}
+				$buttonMessage = [
+					'text' => $postdata['text'],
+					'footer' => 'Hello World',
+					'buttons' => $buttons,
+					'headerType' => 1
+				];
+				$body = $buttonMessage;
+				unset($postdata['buttonText']);
 			}
 			else if($postdata['type'] == "Image" ){
 				$body = [
@@ -120,7 +172,7 @@
 				];
 			}
 
-			
+			// dd($body);
 			$response = Http::withHeaders([
 				'Content-Type' => 'application/json'
 			  ])->post(env('URL_WA_SERVER').'/'.$device->name.'/messages/send', 
@@ -131,10 +183,11 @@
 				]
 			);
 				
-			// dd($response->getBody());
 			$res = json_decode($response->getBody());
+			$status = $res->error ? $res->error : $res->status;
 			// dd($res);
-			$postdata['status'] = $res->status;
+
+			$postdata['status'] = $status;
 	    }
 	    public function hook_after_add($id) {        
 
