@@ -145,12 +145,11 @@
 				}
 				$buttonMessage = [
 					'text' => $postdata['text'],
-					'footer' => 'Hello World',
+					'footer' => 'saiful.coder@gmail.com',
 					'buttons' => $buttons,
 					'headerType' => 1
 				];
 				$body = $buttonMessage;
-				unset($postdata['buttonText']);
 			}
 			else if($postdata['type'] == "Image" ){
 				$body = [
@@ -185,6 +184,8 @@
 				
 			$res = json_decode($response->getBody());
 			$status = $res->error ? $res->error : $res->status;
+			unset($postdata['buttonText']);
+
 			// dd($res);
 
 			$postdata['status'] = $status;
