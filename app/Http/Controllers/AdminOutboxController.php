@@ -45,7 +45,7 @@
 			$this->form = [];
 			$this->form[] = ['label'=>'Device','name'=>'id_device','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'device,name','help'=>'Will show conneted device','datatable_where'=>'status="AUTHENTICATED"'];
 			$this->form[] = ['label'=>'Type','name'=>'type','type'=>'select2','validation'=>'required','width'=>'col-sm-10','dataenum'=>'Text;Button;Image;Video;PDF'];
-			$this->form[] = ['label'=>'Number','name'=>'number','type'=>'text','validation'=>'required|numeric|min:1','width'=>'col-sm-10','help'=>'The receiver phone number in format: [Country Code Without + Sign][Phone Number]. Example: 628231xxxxxx.'];
+			$this->form[] = ['label'=>'Number','name'=>'number','type'=>'multitext','validation'=>'required|min:1','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Text','name'=>'text','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Url File','name'=>'url_file','type'=>'upload','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Button','name'=>'buttonText','type'=>'custom','width'=>'col-sm-10','html'=>'<div id="inputContainer"></div>        <button id="add" type="button"  class="btn btn-primary"><i class="fa fa-plus-circle">ADD</i></button>'];
@@ -58,7 +58,7 @@
 			//$this->form[] = ['label'=>'Number','name'=>'number','type'=>'text','validation'=>'required|numeric|min:1','width'=>'col-sm-10','help'=>'The receiver phone number in format: [Country Code Without + Sign][Phone Number]. Example: 628231xxxxxx.'];
 			//$this->form[] = ['label'=>'Text','name'=>'text','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Url File','name'=>'url_file','type'=>'upload','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Button','name'=>'button','type'=>'custom','width'=>'col-sm-10','html'=>'<div id="inputContainer"></div>        <button id="add" type="button"  class="btn btn-primary"><i class="fa fa-plus-circle">ADD</i></button>'];
+			//$this->form[] = ['label'=>'Button','name'=>'buttonText','type'=>'custom','width'=>'col-sm-10','html'=>'<div id="inputContainer"></div>        <button id="add" type="button"  class="btn btn-primary"><i class="fa fa-plus-circle">ADD</i></button>'];
 			# OLD END FORM
 
 			$this->sub_module = array();
@@ -116,20 +116,17 @@
 	    }
 	    public function hook_row_index($column_index,&$column_value) {	        
 	    }
-	    public function hook_before_add(&$postdata) { 
-			// dd($postdata);
-			$number = $postdata['number'];
-			if ($number[0] == "0" || $number[0] == "8") {
-				$format_number = env('REGIONAL').substr($postdata['number'], 1);
-			}else{
-				$format_number = $postdata['number'];
-			}
+	    public function hook_before_add(&$postdata) {
+			$number = explode("|", $postdata['number']);
+			echo $this->formatNumber($number);
+			echo count($number);
+			
+			dd($number);
 
 			$device = DB::table('device')->select('name')->where('id',$postdata['id_device'])->first();
 			// echo "tipe pesan ".$postdata['type'];
 			// Text;Image;Video;PDF
 			// send text
-			// dd($postdata);
 			if($postdata['type'] == "Text"){
 				$body = ['text'=>$postdata['text']];
 			}
@@ -170,18 +167,41 @@
 					'fileName' => 'document.pdf'
 				];
 			}
+			// convert to array
+			$number = explode("|", $postdata['number']);
+			// dd($number);
+			// dd($postdata);
+			foreach ($number as $q) {
+				$format_number = $this->formatNumber($q);
+				$data[] = [
+					'jid' => $format_number.'@s.whatsapp.net',
+					'type' => 'number',
+					'delay' => 5000,
+					'message' => $body
+				];
+			}
 
-			// dd($body);
+			// cek bulk number
+			if(count($number) ==1){
+				// single number
+				$format_number = $this->formatNumber($number[0]);
+				$response = Http::withHeaders([
+					'Content-Type' => 'application/json'
+				  ])->post(env('URL_WA_SERVER').'/'.$device->name.'/messages/send', 
+					[
+					'jid' => $format_number.'@s.whatsapp.net',
+					'type' => 'number',
+					'message' => $body
+					]
+				);
+			}else{
+				// bulk number
 			$response = Http::withHeaders([
-				'Content-Type' => 'application/json'
-			  ])->post(env('URL_WA_SERVER').'/'.$device->name.'/messages/send', 
-				[
-				'jid' => $format_number.'@s.whatsapp.net',
-				'type' => 'number',
-				'message' => $body
-				]
-			);
-				
+				'Content-Type' => 'application/json'					
+				])->post(env('URL_WA_SERVER').'/'.$device->name.'/messages/send/bulk', $data
+					);					 			
+			}
+		
 			$res = json_decode($response->getBody());
 			$status = $res->error ? $res->error : $res->status;
 			unset($postdata['buttonText']);
@@ -190,6 +210,17 @@
 
 			$postdata['status'] = $status;
 	    }
+		public function formatNumber($number)
+		{
+		if ($number[0] == "0" || $number[0] == "8") {
+			$format_number = env('REGIONAL').substr($number, 1);
+		}
+		else{
+			$format_number = $number;
+		}
+			return $format_number;
+			# code...
+		}
 	    public function hook_after_add($id) {        
 
 	    }
