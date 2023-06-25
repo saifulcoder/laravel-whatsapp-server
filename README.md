@@ -1,5 +1,6 @@
 # Update Baileys API
 Tutorial installation [here](https://youtu.be/rTn-TBj5ifs)
+Add bulk messages [here](https://youtu.be/lYf8AJ7-BN4)
 
 # Baileys Restful API with Laravel
 An implementation of [@adiwajshing/Baileys](https://github.com/adiwajshing/Baileys) as a simple RESTful API service with multiple device support.
