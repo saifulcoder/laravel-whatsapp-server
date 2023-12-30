@@ -1,6 +1,4 @@
 node_modules/
-dist/
 debug/
-prisma/migrations/
 .env
 *.tgz

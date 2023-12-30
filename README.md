@@ -1,7 +1,6 @@
-# Update Baileys API
-Tutorial installation [here](https://youtu.be/rTn-TBj5ifs)
-Add bulk messages [here](https://youtu.be/lYf8AJ7-BN4)
-contact us saiful.coder@gmail.com
+# Tutorial Update Baileys API
+1. Tutorial installation [here](https://youtu.be/rTn-TBj5ifs)
+2. Add bulk messages [here](https://youtu.be/lYf8AJ7-BN4)
 
 # Baileys Restful API with Laravel
 An implementation of [@adiwajshing/Baileys](https://github.com/adiwajshing/Baileys) as a simple RESTful API service with multiple device support.
@@ -148,7 +147,12 @@ This project is intended for learning purpose only, don't use it for spamming or
 | Get Chat Conversation                                         | coming soon |
 | Webhook                                                    | coming soon |
 
+## For Improvement and project
+
+contact us saiful.coder@gmail.com
+
 ## Contributing
+
 
 This project helps you and you want to help keep it going? Buy me a coffee:
 <br> <a href="https://www.buymeacoffee.com/saifulcoder" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 61px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a><br>
