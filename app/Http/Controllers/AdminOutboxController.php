@@ -118,10 +118,10 @@
 	    }
 	    public function hook_before_add(&$postdata) {
 			$number = explode("|", $postdata['number']);
-			echo $this->formatNumber($number);
-			echo count($number);
+	//		echo $this->formatNumber($number);
+		//	echo count($number);
 			
-			dd($number);
+		//	dd($number);
 
 			$device = DB::table('device')->select('name')->where('id',$postdata['id_device'])->first();
 			// echo "tipe pesan ".$postdata['type'];
